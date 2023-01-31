@@ -1,6 +1,6 @@
 <template>
   <div class="pb-16 pt-16">
-    <data-table-component :data-table="howWorkRadio.title" v-if="dataI18n">
+    <data-table-component :data-table="howWorkRadio.title">
       <v-form ref="form" @submit.prevent="submit">
         <v-row>
           <v-col cols="12" md="4" v-for="(item, index) in howWorkRadio.list" :key="index">
@@ -63,13 +63,17 @@ import AgreeToEditComponent from "@/components/dialogs/agree-to-edit-component.v
 export default {
   name: "how-we-work-radio-component",
   components: {AgreeToEditComponent, DataTableComponent},
-  data() {
-    return {
-      dialogEdit: false
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
     }
   },
-  async fetch() {
-    await this.GetI18n()
+  data() {
+    return {
+      dialogEdit: false,
+      dataI18n: this.dataProps
+    };
   },
   computed: {
     howWorkRadio() {

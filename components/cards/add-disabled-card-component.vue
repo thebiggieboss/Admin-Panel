@@ -6,7 +6,7 @@
         v-on="on"
         @click="$emit('change')"
       >
-        mdi-check
+        mdi-eye
       </v-icon>
     </template>
     <span>{{cardData}}</span>

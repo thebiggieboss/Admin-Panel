@@ -1,6 +1,6 @@
 <template>
   <div class="pt-16 pb-16">
-    <data-table-component :data-table="inetWiFi.key" v-if="dataI18n">
+    <data-table-component :data-table="inetWiFi.key">
       <v-form ref="form" @submit.prevent="submit">
         <v-row>
           <v-col cols="12" md="6">
@@ -91,13 +91,17 @@ import DataTableComponent from "@/components/tables/data-table-component.vue";
 export default {
   name: "internet-wifi-component",
   components: {DataTableComponent, AgreeToEditComponent},
-  data() {
-    return {
-      dialogEdit: false
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
     }
   },
-  async fetch() {
-    await this.GetI18n()
+  data() {
+    return {
+      dialogEdit: false,
+      dataI18n: this.dataProps
+    };
   },
   computed: {
     inetWiFi() {

@@ -1,6 +1,6 @@
 <template>
   <div class="pb-16 pt-16">
-    <data-table-component :data-table="dedicatedCard.title" v-if="dataI18n">
+    <data-table-component :data-table="dedicatedCard.title">
       <v-form ref="form" @submit.prevent="submit">
         <v-row>
           <v-col v-for="(item, index) in dedicatedCard.tab[1].cards" :key="index" cols="12" lg="3">
@@ -111,13 +111,17 @@ import AddNewCardComponent from "@/components/cards/add-new-card-component.vue";
 export default {
   name: "dedicated-cards-block-component",
   components: {AddNewCardComponent, DataTableComponent, AgreeToEditComponent, DeleteCardComponent},
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data() {
     return {
       dialogEdit: false,
-    }
-  },
-  async fetch() {
-    await this.GetI18n()
+      dataI18n: this.dataProps
+    };
   },
   computed: {
     dedicatedCard() {

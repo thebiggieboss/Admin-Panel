@@ -1,6 +1,6 @@
 <template>
-  <div class="pb-16 pt-16" v-if="dataI18n">
-    <select-city-component />
+  <div class="pb-16 pt-16">
+    <select-city-component :city-list="dataI18n"/>
     <data-table-component :data-table="mainService.key">
       <v-form ref="form" @submit.prevent="submit">
         <div  v-for="(item, index) in mainServicesBlocks" :key="index">
@@ -45,20 +45,28 @@ export default {
   components: {
     AgreeToEditComponent,
     ServiceFullCardComponent, ServiceCardComponent, SelectCityComponent, DataTableComponent },
-  data: () => {
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  data() {
     return {
-      dialogEdit: false
+      dialogEdit: false,
+      dataI18n: this.dataProps
     };
   },
-  async fetch() {
-    await this.GetI18n();
-  },
   computed: {
+    location() {
+      let city = this.dataI18n[this.$store.state.lang.selectLang].selectCity.list
+      return city.find(item => item.id === this.$store.state.lang.location)
+    },
     mainService() {
       return this.dataI18n[this.$store.state.lang.selectLang].mainServices;
     },
     mainServicesBlocks() {
-       return this.location?.mainServices.map((service) => {
+       return this.location.mainServices.map((service) => {
          const block = this.mainService.blocks.find((block) => block.id === service.id);
          return {
            ...block,

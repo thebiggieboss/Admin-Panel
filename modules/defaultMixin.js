@@ -1,8 +1,10 @@
 import {getI18n, postI18n} from "@/service";
 export default {
-  data: () =>  ({
-    dataI18n: undefined,
-  }),
+  // data() {
+  //   return {
+  //     dataI18n: undefined
+  //   }
+  // },
   computed: {
     validateInputs() {
       return {
@@ -32,12 +34,6 @@ export default {
         ]
       }
     },
-    selectCity() {
-      return this.dataI18n ? this.dataI18n[this.$store.state.lang.selectLang].selectCity.list : undefined
-    },
-    location() {
-      return this.selectCity?.find(item => item.id === this.$store.state.lang.location)
-    }
   },
   methods: {
     arrDeleter(block, blockIndex) {

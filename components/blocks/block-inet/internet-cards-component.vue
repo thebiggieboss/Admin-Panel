@@ -1,6 +1,6 @@
 <template>
   <div class="pb-16 pt-16">
-    <data-table-component v-if="dataI18n" >
+    <data-table-component>
       <v-form ref="form" @submit.prevent="submit">
         <v-row>
           <v-col col="12" md="4" v-for="(item, index) in inetCard" :key="index">
@@ -57,14 +57,21 @@ import AgreeToEditComponent from "@/components/dialogs/agree-to-edit-component.v
 export default {
   name: "internet-cards-component",
   components: {AgreeToEditComponent, DataTableComponent},
-  props: ['cardData'],
-  data() {
-    return {
-      dialogEdit: false
+  props: {
+    cardData: {
+      type: String,
+      default: () => ''
+    },
+    dataProps: {
+      type: Object,
+      default: () => ({})
     }
   },
-  async fetch() {
-    await this.GetI18n()
+  data() {
+    return {
+      dialogEdit: false,
+      dataI18n: this.dataProps
+    };
   },
   computed: {
     inetCard() {

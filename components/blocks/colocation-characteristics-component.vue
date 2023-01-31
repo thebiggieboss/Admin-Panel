@@ -1,6 +1,6 @@
 <template>
   <div class="pb-16 pt-16">
-    <data-table-component :data-table="colcationChar.title" v-if="dataI18n">
+    <data-table-component :data-table="colcationChar.title">
       <v-form ref="form" @submit.prevent="submit">
         <v-row>
           <v-col cols="12">
@@ -91,13 +91,17 @@ import AgreeToEditComponent from "@/components/dialogs/agree-to-edit-component.v
 export default {
   name: "colocation-characteristics-component",
   components: {AgreeToEditComponent, AddNewCardComponent, DeleteCardComponent, DataTableComponent},
-  data() {
-    return {
-      dialogEdit: false
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
     }
   },
-  async fetch() {
-    await this.GetI18n()
+  data() {
+    return {
+      dialogEdit: false,
+      dataI18n: this.dataProps
+    };
   },
   computed: {
     colcationChar() {

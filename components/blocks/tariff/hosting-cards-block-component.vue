@@ -1,6 +1,6 @@
 <template>
   <div class="pt-16 pb-16">
-    <data-table-component :data-table="hostingCard.title" v-if="dataI18n">
+    <data-table-component :data-table="hostingCard.title">
       <v-form ref="form" @submit.prevent="submit">
         <v-row>
           <v-col v-for="(item, index) in hostingCard.cards" :key="index" cols="12" lg="3">
@@ -119,13 +119,17 @@ import AgreeToEditComponent from "@/components/dialogs/agree-to-edit-component.v
 export default {
   name: "hosting-cards-block-component",
   components: {AgreeToEditComponent, AddNewCardComponent, DeleteCardComponent, DataTableComponent},
-  data() {
-    return {
-      dialogEdit: false
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
     }
   },
-  async fetch() {
-    await this.GetI18n()
+  data() {
+    return {
+      dialogEdit: false,
+      dataI18n: this.dataProps
+    };
   },
   computed: {
     hostingCard() {

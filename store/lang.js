@@ -5,7 +5,7 @@ import {getI18n} from "@/service";
 const defaultLang = 'ru'
 export const state = () => ({
   selectLang: 'ru',
-  location: undefined,
+  location: 1,
 });
 
 export const getters = {
@@ -50,7 +50,7 @@ export const actions = {
   },
   async getLocation({ commit, state }, app) {
      if(!state.location) {
-       commit("setLocation", 1 );
+       commit("setLocation", 1);
      }
   }
     // const locationId = this.$cookies.get("location");

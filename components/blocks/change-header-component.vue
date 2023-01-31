@@ -1,6 +1,6 @@
 <template>
   <div class="pt-16 pb-16">
-    <data-table-component :data-table="headerMenu.key" v-if="dataI18n">
+    <data-table-component :data-table="headerMenu.key">
       <v-form ref="form" @submit.prevent="submit">
         <v-row>
           <v-col
@@ -47,14 +47,18 @@ export default {
   name: "change-header-component",
   components: {
     ChangeHeaderCardComponent, AddNewCardComponent, DataTableComponent, AgreeToEditComponent },
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data() {
     return {
       dialogEdit: false,
       blockObj: {},
+      dataI18n: this.dataProps
     };
-  },
-  async fetch() {
-    await this.GetI18n();
   },
   computed: {
     headerMenu() {

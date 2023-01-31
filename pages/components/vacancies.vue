@@ -1,15 +1,17 @@
 <template>
   <div>
-    <change-vacancies-component />
+    <change-vacancies-component :data-props="I18n"/>
   </div>
 </template>
 
 <script>
 import ChangeVacanciesComponent from "@/components/blocks/vacancies-component.vue";
+import dataMixin from "@/modules/dataMixin";
 
 export default {
   name: "vacancies",
-  components: {ChangeVacanciesComponent}
+  components: {ChangeVacanciesComponent},
+  mixins: [dataMixin],
 }
 </script>
 

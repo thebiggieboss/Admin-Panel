@@ -1,6 +1,6 @@
 <template>
   <div class="pb-16 pt-16">
-    <data-table-component :data-table="itService.key" v-if="dataI18n">
+    <data-table-component :data-table="itService.key">
       <v-form ref="form" @submit.prevent="submit">
         <v-card>
           <v-card-title>
@@ -77,13 +77,17 @@ import AddNewCardComponent from "@/components/cards/add-new-card-component.vue";
 export default {
   name: "it-out-services-component",
   components: {AddNewCardComponent, DeleteCardComponent, AgreeToEditComponent, DataTableComponent},
-  data() {
-    return {
-      dialogEdit: false
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
     }
   },
-  async fetch() {
-    await this.GetI18n()
+  data() {
+    return {
+      dialogEdit: false,
+      dataI18n: this.dataProps
+    };
   },
   computed: {
     itService() {

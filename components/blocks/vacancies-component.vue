@@ -1,6 +1,6 @@
 <template>
   <div class="pb-16 pt-16">
-    <v-form ref="form" @submit.prevent="submit" v-if="dataI18n">
+    <v-form ref="form" @submit.prevent="submit">
       <v-card>
         <v-tabs
           v-model="tab"
@@ -177,12 +177,18 @@ export default {
   components: {
     AddNewBlockCardComponent,
     AgreeToEditComponent, AddNewCardComponent, DeleteCardComponent, DataTableComponent},
-  data: () => ({
-    tab: null,
-    dialogEdit: false
-  }),
-  async fetch() {
-    await this.GetI18n()
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  data() {
+    return {
+      tab: null,
+      dialogEdit: false,
+      dataI18n: this.dataProps
+    };
   },
   computed: {
     vacanciesCard() {

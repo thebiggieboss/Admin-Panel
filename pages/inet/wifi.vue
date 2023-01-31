@@ -1,8 +1,8 @@
 <template>
   <div>
-    <internet-wifi-component />
-    <how-we-work-component />
-    <internet-cards-component :card-data="`wifiList`"/>
+    <internet-wifi-component :data-props="I18n"/>
+    <how-we-work-component :data-props="I18n"/>
+    <internet-cards-component :card-data="`wifiList`" :data-props="I18n"/>
   </div>
 </template>
 
@@ -10,10 +10,12 @@
 import HowWeWorkComponent from "@/components/blocks/block-inet/how-we-work-component.vue";
 import InternetCardsComponent from "@/components/blocks/block-inet/internet-cards-component.vue";
 import InternetWifiComponent from "@/components/blocks/block-inet/internet-wifi-component.vue";
+import dataMixin from "@/modules/dataMixin";
 
 export default {
   name: "wifi",
-  components: {InternetWifiComponent, InternetCardsComponent, HowWeWorkComponent, }
+  components: {InternetWifiComponent, InternetCardsComponent, HowWeWorkComponent, },
+  mixins: [dataMixin],
 }
 </script>
 

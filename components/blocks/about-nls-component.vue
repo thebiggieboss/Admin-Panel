@@ -1,6 +1,6 @@
 <template>
   <div class="pt-16 pb-16">
-    <data-table-component :data-table="aboutComp.key" v-if="dataI18n">
+    <data-table-component :data-table="aboutComp.key">
       <v-form ref="form" @submit.prevent="submit">
         <v-card class="mx-auto">
           <v-card-title>
@@ -115,11 +115,17 @@ import AgreeToEditComponent from "@/components/dialogs/agree-to-edit-component.v
 export default {
   name: "about-nls-component",
   components: {AgreeToEditComponent, AddNewCardComponent, DeleteCardComponent, DataTableComponent},
-  data: () => ({
-    dialogEdit: false
-  }),
-  async fetch() {
-    await this.GetI18n()
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  data() {
+    return {
+      dialogEdit: false,
+      dataI18n: this.dataProps
+    }
   },
   computed: {
     aboutComp() {

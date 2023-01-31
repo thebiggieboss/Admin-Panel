@@ -1,6 +1,6 @@
 <template>
   <div class="pb-16 pt-16">
-    <data-table-component :data-table="inetRadio.key" v-if="dataI18n">
+    <data-table-component :data-table="inetRadio.key">
       <v-form ref="form" @submit.prevent="submit">
         <v-row>
           <v-col cols="12" md="6">
@@ -91,13 +91,17 @@ import AgreeToEditComponent from "@/components/dialogs/agree-to-edit-component.v
 export default {
   name: "internet-radio-channel-component",
   components: {AgreeToEditComponent, DataTableComponent},
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data() {
     return {
       dialogEdit: false,
-    }
-  },
-  async fetch() {
-    await this.GetI18n()
+      dataI18n: this.dataProps
+    };
   },
   computed: {
     inetRadio() {

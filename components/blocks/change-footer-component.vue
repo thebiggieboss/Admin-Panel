@@ -1,6 +1,6 @@
 <template>
   <div class="pb-16 pt-16">
-    <data-table-component :data-table="footerItems.key" v-if="dataI18n">
+    <data-table-component :data-table="footerItems.key">
       <v-form ref="form" @submit.prevent="submit">
         <v-row>
           <v-col
@@ -49,13 +49,17 @@ export default {
     AgreeToEditComponent,
     DataTableComponent,
   },
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data() {
     return {
       dialogEdit: false,
+      dataI18n: this.dataProps
     };
-  },
-  async fetch() {
-    await this.GetI18n();
   },
   computed: {
     footerItems() {

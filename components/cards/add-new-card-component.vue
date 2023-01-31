@@ -29,7 +29,7 @@ export default {
     return {
       tooltipData: [
         { title: 'Добавление нового пункта', icon: require('~/assets/icons/add-block.svg'), size: 30 },
-        { title: 'Добавление нового услуг', icon: require('~/assets/icons/add-block2.svg'), size: 50 }
+        { title: 'Добавление нового блока', icon: require('~/assets/icons/add-block2.svg'), size: 50 },
       ]
     }
   },

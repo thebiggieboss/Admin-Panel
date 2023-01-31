@@ -1,6 +1,6 @@
 <template>
   <div class="pt-16 pb-16">
-    <data-table-component :data-table="chooseUs.key" v-if="dataI18n">
+    <data-table-component :data-table="chooseUs.key">
       <v-form ref="form" @submit.prevent="submit">
         <v-card class="mx-auto">
           <v-card-title>
@@ -79,13 +79,17 @@ import AgreeToEditComponent from "@/components/dialogs/agree-to-edit-component.v
 export default {
   name: "choose-us-component",
   components: {AgreeToEditComponent, AddNewCardComponent, DeleteCardComponent, DataTableComponent},
-  data() {
-    return {
-      dialogEdit: false
+  props: {
+    dataProps: {
+      type: Object,
+      default: () => ({})
     }
   },
-  async fetch() {
-    await this.GetI18n();
+  data() {
+    return {
+      dialogEdit: false,
+      dataI18n: this.dataProps
+    };
   },
   computed: {
     chooseUs() {

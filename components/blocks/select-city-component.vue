@@ -1,14 +1,15 @@
 <template>
-  <v-row v-if="dataI18n">
+  <v-row>
     <v-col cols="2">
       <v-select
-        v-model="select"
+        :value="$store.state.lang.location"
         label="Города"
-        :items="selectCity"
+        :items="listOfCity"
         item-text="value"
         item-value="id"
         dense
         solo
+        @input="select"
       >
       </v-select>
     </v-col>
@@ -18,20 +19,30 @@
 <script>
 export default {
   name: "select-city-component",
-  data() {
-    return {
-      select: 1
+  props: {
+    cityList: {
+      type: Object,
+      default: () => ({})
     }
   },
-  async fetch() {
-    await this.GetI18n()
+  data() {
+    return {
+    }
   },
-  watch: {
+  computed: {
+    listOfCity() {
+      return this.cityList[this.$store.state.lang.selectLang].selectCity.list
+    },
+  },
+  methods: {
     select(id) {
       this.$store.commit('lang/setLocation', id)
       // this.$cookies.set("location", id)
     }
-  },
+  }
+  // created() {
+  //   this.select = this.$store.state.lang.location
+  // }
 }
 </script>
 
