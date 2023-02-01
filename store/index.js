@@ -6,6 +6,7 @@ export const mutations = {};
 
 export const actions = {
   async nuxtServerInit({ dispatch }, { redirect }) {
+    await dispatch("user/getUserInfo", redirect);
     await dispatch("lang/getLangInfo", redirect);
   }
 };

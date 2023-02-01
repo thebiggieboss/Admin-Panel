@@ -16,9 +16,11 @@
         </v-list-item>
         <v-list-item>
           <v-list-item-content class="text-center">
-            <v-list-item-title class="text-h6"> John Leider </v-list-item-title>
+            <v-list-item-title class="text-h6"> Big Brother </v-list-item-title>
           </v-list-item-content>
-          <v-img :src="images.exitIcon" max-height="28" max-width="28"></v-img>
+          <v-btn icon @click="logout">
+            <v-img :src="images.exitIcon" max-height="28" max-width="28"></v-img>
+          </v-btn>
         </v-list-item>
         <v-list-item router :to="'/'">
           <v-list-item-icon>
@@ -35,7 +37,6 @@
           <template v-slot:activator>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </template>
-
           <v-list-item
             v-for="(deepItem, index) in item.list"
             link
@@ -54,6 +55,18 @@
             <v-list-item-title>{{ deepItem.title }}</v-list-item-title>
           </v-list-item>
         </v-list-group>
+        <v-list-item router :to="'/news'">
+          <v-list-item-icon>
+            <v-icon>mdi-newspaper</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title v-text="'Новости'"> </v-list-item-title>
+        </v-list-item>
+        <v-list-item router :to="'/media'">
+          <v-list-item-icon>
+            <v-icon>mdi-image</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title v-text="'Картинки'"> </v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
@@ -98,7 +111,7 @@
 </template>
 
 <script>
-import { getI18n } from "@/service";
+import { getI18n } from "@/service/user";
 import { mapActions } from "vuex";
 
 export default {
@@ -276,7 +289,10 @@ export default {
           type: e.success ? "success" : "error",
         });
       }
-    }
+    },
+    logout() {
+      this.$store.dispatch("user/logout");
+    },
   },
   async mounted() {
     await this.GetI18n()

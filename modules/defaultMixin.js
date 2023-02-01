@@ -1,4 +1,4 @@
-import {getI18n, postI18n} from "@/service";
+import {getI18n, postI18n} from "@/service/user";
 export default {
   // data() {
   //   return {
