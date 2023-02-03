@@ -124,6 +124,15 @@ export default {
           isActive: () => this.editor.isActive('codeBlock'),
         },
         {
+          icon: 'image-add-fill',
+          title: 'Image',
+          action: () => {
+            const url = window.prompt('URL')
+            this.editor.chain().focus().setImage({ src: url }).run()
+          },
+          // isActive: () => this.editor.isActive('Image'),
+        },
+        {
           type: 'divider',
         },
         {

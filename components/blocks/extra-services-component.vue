@@ -31,19 +31,18 @@
                             :card-data="'Удалить'"
                             @change="deleteCard(item.id, index)"
                           />
-                          <v-tooltip top v-if="!item.show">
-                            <template v-slot:activator="{ on, attrs }">
-                              <v-icon
-                                v-bind="attrs"
-                                v-on="on"
-                                @click="hideCard(item.id)"
-                              >
-                                mdi-eye-off
-                              </v-icon>
-                            </template>
-                            <span>Скрыть</span>
-                          </v-tooltip>
-                          <add-disabled-card-component v-if="item.show" :card-data="'Показать'" @change="showCard(item.id)"/>
+                            <v-icon
+                              v-if="item.show"
+                              @click="showCard(item.id)"
+                            >
+                              mdi-eye-off
+                            </v-icon>
+                          <v-icon
+                            v-if="!item.show"
+                            @click="hideCard(item.id)"
+                          >
+                            mdi-eye
+                          </v-icon>
                         </v-col>
                       </v-row>
                       <v-card elevation="0" :disabled="item.show">

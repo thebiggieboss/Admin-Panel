@@ -3,7 +3,7 @@
     <v-container>
       <v-card>
         <v-tabs
-          v-model="tab"
+          v-model="currentTab"
           align-with-title
           background-color="primary"
           dark
@@ -15,45 +15,61 @@
             v-for="(item, index) in tabs"
             :key="index"
           >
-            {{ item }}
+            {{ item.name }}
           </v-tab>
         </v-tabs>
-        <v-tabs-items v-model="tab">
+        <v-tabs-items v-model="currentTab">
           <v-tab-item
-            v-for="(item, index) in obj"
+            v-for="(item, index) in tabs"
             :key="index"
           >
-            <media-card-component :card-data="item"/>
+            <v-row>
+              <v-col cols="12" v-for="(el, elIndex) in contentTab" :key="elIndex" md="6" lg="3">
+                  <media-card-component :card-data="el" @delete="deleteImg"/>
+              </v-col>
+            </v-row>
           </v-tab-item>
         </v-tabs-items>
-        <v-card-title>
-          <div class="media-component__input">
-            <v-file-input
-              v-model="image"
-              prepend-icon="mdi-camera"
-              accept="image/png, image/jpeg, image/bmp"
-              @change="selectImage"
-              @click:clear="clearImagePreview()"
-              label="Выбрать файл"
-            ></v-file-input>
-          </div>
-        </v-card-title>
-        <v-card-text>
-          <v-sheet class="v-sheet--box media-component__input">
-            <v-img
-              :src="imagePreview || '/images/no-image.jpeg'"
-              aspect-ratio="2"
-              contain
-            ></v-img>
-          </v-sheet>
-        </v-card-text>
-        <v-card-actions>
-          <v-btn
-            @click="saveImg"
-          >
-            Сохранить
-          </v-btn>
-        </v-card-actions>
+        <v-form @submit.prevent="createImg" ref="form">
+          <v-card-title>
+            <div class="media-component__input">
+              <v-file-input
+                v-model="image"
+                prepend-icon="mdi-camera"
+                accept="image/png, image/jpeg, image/bmp"
+                @change="selectImage"
+                @click:clear="clearImagePreview()"
+                label="Выбрать файл"
+                :rules="[v => !!v || 'заполните поле']"
+                required
+              ></v-file-input>
+              <v-textarea
+                v-model="keyName"
+                label="Image name"
+                rows="1"
+                :rules="[v => !!v || 'заполните поле']"
+                required
+              >
+              </v-textarea>
+            </div>
+          </v-card-title>
+          <v-card-text>
+            <v-sheet class="v-sheet--box media-component__input">
+              <v-img
+                :src="imagePreview || '/images/no-image.jpeg'"
+                aspect-ratio="2"
+                contain
+              ></v-img>
+            </v-sheet>
+          </v-card-text>
+          <v-card-actions>
+            <v-btn
+              type="submit"
+            >
+              Сохранить
+            </v-btn>
+          </v-card-actions>
+        </v-form>
       </v-card>
     </v-container>
   </div>
@@ -61,69 +77,78 @@
 
 <script>
 import MediaCardComponent from "@/components/cards/media-card-component.vue";
+import {CreateImg, DeleteImage, GetGroupImage, GetImageByGroup} from "@/service/user";
 
 export default {
   name: "media-component",
   components: {MediaCardComponent},
   data () {
     return {
-      tab: null,
-      image: [],
+      currentTab: null,
+      image: null,
       imagePreview: "",
-      tabs: ['Images', 'Icons', 'News'],
-      obj: {
-        images: [
-          {
-            path: '/icon/arman.svg',
-            id: 1,
-            src: 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg',
-          },
-          {
-            path: '',
-            id: 2,
-            src: 'https://www.istockphoto.com/resources/images/PhotoFTLP/P4-JAN-iStock-1432854572.jpg',
-          },
-          {
-            path: '',
-            id: 3,
-            src: 'https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg',
-          },
-          {
-            path: '',
-            id: 3,
-            src: 'https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg',
-          },
-          {
-            path: '',
-            id: 3,
-            src: 'https://thumbs.dreamstime.com/b/beautiful-rain-forest-ang-ka-nature-trail-doi-inthanon-national-park-thailand-36703721.jpg',
-          }
-        ],
-        icons: [
-          {
-            path: '',
-            id: 1,
-            src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Circle-icons-gamecontroller.svg/2048px-Circle-icons-gamecontroller.svg.png',
-          }
-        ],
-        news: [
-          {
-            path: '',
-            id: 1,
-            src: 'https://cms.meganet.kz/wp-content/uploads/2022/03/post__img-1.png',
-          },
-          {
-            path: '',
-            id: 2,
-            src: 'https://cms.meganet.kz/wp-content/uploads/2022/03/post__img-2.png',
-          },
-        ]
-      }
+      tabs: [],
+      contentTab: [],
+      keyName: ''
+    }
+  },
+  watch: {
+    async currentTab(e) {
+      let groupName = this.tabs[e].name
+      await this.getImageByGroup(groupName)
     }
   },
   methods: {
-    saveImg() {
+    async getGroupImage() {
+      try {
+        const res = await GetGroupImage()
+        this.tabs = res.data
+      }catch (e) {
+        this.$toast.open({
+          message: e.message,
+          type: "error"
+        })
+      }
+    },
+    async getImageByGroup(e) {
+      try {
+        const data = await GetImageByGroup(e)
+        this.contentTab = data
+      }catch (e) {
+        this.$toast.open({
+          message: e.message,
+          type: "error"
+        })
+      }
+    },
+    async createImg() {
+      if(!this.$refs.form.validate()) {
+        this.$toast.open({
+          message: "Заполните поля",
+          type: "warning",
+        });
+        return
+      }
+      const form = new FormData();
+      form.append('image', this.image);
+      form.append('key_name', this.keyName)
+      form.append('group_id', this.tabs[this.currentTab].id)
 
+      try {
+        const res = await CreateImg(form)
+        this.$toast.open({
+          message: res.message,
+          type: "success"
+        })
+        await this.getImageByGroup(this.tabs[this.currentTab].name)
+        this.imagePreview = ''
+        this.$refs.form.reset()
+      }catch (e) {
+        this.$toast.open({
+          message: e.response.data.message,
+          type: "error"
+        })
+      }
     },
     async selectImage(e) {
       const file = e;
@@ -142,6 +167,25 @@ export default {
     async clearImagePreview() {
       this.imagePreview = "";
     },
+    async deleteImg(id) {
+      try {
+        const res = await DeleteImage(id)
+        this.$toast.open({
+          message: res.message,
+          type: "success"
+        })
+        await this.getImageByGroup(this.tabs[this.currentTab].name)
+      }catch (e) {
+        this.$toast.open({
+          message: e.message,
+          type: "error"
+        })
+      }
+    }
+  },
+  async mounted() {
+    await this.getGroupImage()
+    // await this.getImageByGroup(this.tabs[this.currentTab].name)
   }
 }
 </script>

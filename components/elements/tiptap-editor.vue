@@ -13,6 +13,7 @@ import MenuBar from "@/components/elements/menu-bar.vue";
 import Highlight from '@tiptap/extension-highlight'
 import TaskItem from '@tiptap/extension-task-item'
 import TaskList from '@tiptap/extension-task-list'
+import Image from '@tiptap/extension-image'
 import "~/assets/styles/tiptap.scss"
 export default {
   name: "tiptap-editor",
@@ -38,7 +39,9 @@ export default {
         Highlight,
         TaskList,
         TaskItem,
+        Image
         ],
+      content: this.value,
       onUpdate: () => {
         // HTML
         this.$emit('input', this.editor.getHTML())

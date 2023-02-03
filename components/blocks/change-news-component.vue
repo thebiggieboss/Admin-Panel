@@ -9,25 +9,34 @@
                 <v-textarea
                   rows="1"
                   label="Заголовок"
-                  v-model="storeNews.title"
+                  v-model="newsData.title"
                   :rules="validateInputs.longerText"
                   required
                   counter
                 >
                 </v-textarea>
                 <v-textarea
-                  rows="3"
+                  rows="2"
                   label="Описание"
-                  v-model="storeNews.description"
+                  v-model="newsData.description"
                   :rules="validateInputs.longerText"
                   required
                   counter
                 >
                 </v-textarea>
+<!--                <v-textarea-->
+<!--                  rows="1"-->
+<!--                  label="Ссылка на картинку"-->
+<!--                  v-model="storeNews.photo_url"-->
+<!--                  :rules="validateInputs.longerText"-->
+<!--                  required-->
+<!--                  counter-->
+<!--                >-->
+<!--                </v-textarea>-->
                 <v-textarea
                   rows="1"
-                  label="Ссылка на картинку"
-                  v-model="storeNews.photo_url"
+                  label="URL"
+                  v-model="newsData.url"
                   :rules="validateInputs.longerText"
                   required
                   counter
@@ -50,13 +59,13 @@
                       v-bind="attrs"
                       v-on="on"
                       :rules="[
-                       (v) => !!v.length,
+                       (v) => !!v,
                        (v) => (v || '' ).length > 1
                       ]"
                     ></v-text-field>
                   </template>
                   <v-date-picker
-                    v-model="storeNews.dates"
+                    v-model="newsData.dates"
                     range
                   ></v-date-picker>
                 </v-menu>
@@ -64,10 +73,10 @@
                   <p class="text-body-1 black--text">Компания:</p>
                   <div v-for="(el) in checkGroup">
                     <v-checkbox
-                      v-model="storeNews.check"
-                      :label="el"
+                      v-model="newsData.company"
+                      :label="el.name"
                       hide-details
-                      :value="el"
+                      :value="el.name"
                       color="blue"
                       :rules="[(v) => !!v.length]"
                     ></v-checkbox>
@@ -76,13 +85,13 @@
               </v-card-text>
             </v-col>
             <v-col cols="12" lg="6">
-              <v-card-text>
+              <v-card-text v-if="newsData.content">
                 <client-only>
-                  <tiptap-editor v-model="storeNews.content"/>
+                  <tiptap-editor v-model="newsData.content"/>
                 </client-only>
                 <div class="mt-4">
                   <h3 class="pb-1">Content</h3>
-                  <p class="store-news__content" v-html="storeNews.content"></p>
+                  <p class="store-news__content" v-html="newsData.content"></p>
                 </div>
               </v-card-text>
             </v-col>
@@ -102,34 +111,30 @@
 
 <script>
 import TiptapEditor from "@/components/elements/tiptap-editor.vue";
+import {GetAllCompany, GetUrlNews, UpdateNews} from "@/service/user";
+import axios from "axios";
+import {StringToDate,} from "@/modules/dateFormat";
 
 export default {
-  name: "id",
+  name: "change-news-component",
   components: {TiptapEditor},
   data() {
     return {
+      newsData: [],
       datePicker: false,
-      checkGroup: ['NLS.KZ', 'MEGANET'],
-      storeNews: {
-        title: '',
-        description: '',
-        photo_url: '',
-        dates: ['', ''],
-        check: [],
-        content: '',
-      }
+      checkGroup: []
     }
   },
   computed: {
     dateRangeText () {
-      return this.storeNews.dates.sort((a, b) => new Date(a) - new Date(b))
+      return this.newsData?.dates?.sort((a, b) => new Date(a) - new Date(b))
     },
     validateTipTap() {
-      return this.storeNews.content.length > 7
+      return this.newsData.content.length > 7
     }
   },
   methods: {
-    submit() {
+    async submit() {
       if (!this.$refs.form.validate() || !this.validateTipTap) {
         this.$toast.open({
           message: "Заполните поля",
@@ -137,20 +142,60 @@ export default {
         });
         return;
       }
-      let id = 3
-      let params =  {
-        id: ++id,
-        title: this.storeNews.title,
-        description: this.storeNews.description,
-        url: "",
-        photo_url: this.storeNews.photo_url,
-        from: this.storeNews.dates[0],
-        to: this.storeNews.dates[1],
-        content: this.storeNews.content
+      let data = {
+        title: this.newsData.title,
+        description: this.newsData.description,
+        url: this.newsData.url,
+        content: this.newsData.content,
+        company: this.newsData.title.company,
+        active_from: this.newsData.dates[0],
+        active_to: this.newsData.dates[1]
       }
-      console.log(params)
+      try {
+        const res = await UpdateNews(this.newsData.id, data)
+        this.$toast.open({
+          message: res.message,
+          type: res.success ? "success" : "warning"
+        })
+        await this.$router.push('/news')
+      }catch (e) {
+        this.$toast.open({
+          message: e.message,
+          type: "error"
+        })
+      }
+    },
+    async getUrlNews() {
+      try {
+        const data = await GetUrlNews(this.$route.params.url)
+        this.newsData = {
+          ...data.data,
+          dates: [StringToDate(data.data.active_from), StringToDate(data.data.active_to)],
+          company: data.data.company_news.map(item => item.company.name)
+        }
+      }catch (e) {
+        this.$toast.open({
+          message: e.message,
+          type: "error"
+        })
+      }
+    },
+    async getAllCompany() {
+      try {
+        const data = await GetAllCompany()
+        this.checkGroup = data
+      }catch (e) {
+        this.$toast.open({
+          message: e.message,
+          type: "error"
+        })
+      }
     }
-  }
+  },
+  async mounted() {
+    await this.getUrlNews()
+    await this.getAllCompany()
+  },
 }
 </script>
 
