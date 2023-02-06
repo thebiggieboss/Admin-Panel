@@ -4,7 +4,7 @@
       <v-form ref="form" @submit.prevent="submit">
         <v-card>
           <v-row>
-            <v-col cols="12" lg="6">
+            <v-col cols="12">
               <v-card-text>
                 <v-textarea
                   rows="1"
@@ -84,7 +84,7 @@
                 </div>
               </v-card-text>
             </v-col>
-            <v-col cols="12" lg="6">
+            <v-col cols="12">
               <v-card-text>
                 <client-only>
                   <tiptap-editor v-model="storeNews.content"/>
@@ -152,7 +152,7 @@ export default {
         title: this.storeNews.title,
         description: this.storeNews.description,
         url: this.storeNews.url,
-        // photo_url: this.storeNews.photo_url,
+        main_image: this.storeNews.photo_url,
         active_from: this.storeNews.dates[0],
         active_to: this.storeNews.dates[1],
         content: this.storeNews.content,

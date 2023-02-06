@@ -1,10 +1,17 @@
 <template>
-
+  <div>
+    <vds-hosting-calc-component :data-props="I18n"/>
+  </div>
 </template>
 
 <script>
+import VdsHostingCalcComponent from "@/components/blocks/calculators/vds-hosting-calc-component.vue";
+import dataMixin from "@/modules/dataMixin";
+
 export default {
-  name: "vds-hosting"
+  name: "vds-hosting",
+  mixins: [dataMixin],
+  components: {VdsHostingCalcComponent}
 }
 </script>
 

@@ -305,7 +305,7 @@ export default {
 .default__lang-select {
   max-width: 90px;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 960px) {
   .default__main {
     display: none;
   }

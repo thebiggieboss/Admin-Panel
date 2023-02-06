@@ -28,7 +28,7 @@
                     size="128"
                     tile
                   >
-<!--                    <v-img :src="item.photo_url"></v-img>-->
+                    <v-img :src="item.main_image"></v-img>
                   </v-avatar>
                 </v-card-title>
                 <v-card-actions>

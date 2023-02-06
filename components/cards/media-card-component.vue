@@ -56,6 +56,7 @@ export default {
       document.body.appendChild(input)
       input.select();
       document.execCommand('copy');
+      input.remove()
     },
   },
 }

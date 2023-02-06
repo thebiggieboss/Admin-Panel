@@ -24,15 +24,15 @@
                   counter
                 >
                 </v-textarea>
-<!--                <v-textarea-->
-<!--                  rows="1"-->
-<!--                  label="Ссылка на картинку"-->
-<!--                  v-model="storeNews.photo_url"-->
-<!--                  :rules="validateInputs.longerText"-->
-<!--                  required-->
-<!--                  counter-->
-<!--                >-->
-<!--                </v-textarea>-->
+                <v-textarea
+                  rows="1"
+                  label="Ссылка на картинку"
+                  v-model="newsData.main_image"
+                  :rules="validateInputs.longerText"
+                  required
+                  counter
+                >
+                </v-textarea>
                 <v-textarea
                   rows="1"
                   label="URL"
@@ -149,7 +149,8 @@ export default {
         content: this.newsData.content,
         company: this.newsData.title.company,
         active_from: this.newsData.dates[0],
-        active_to: this.newsData.dates[1]
+        active_to: this.newsData.dates[1],
+        main_image: this.newsData.main_image
       }
       try {
         const res = await UpdateNews(this.newsData.id, data)
