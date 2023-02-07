@@ -303,6 +303,34 @@
           ]
         },
         {
+          "id": 6,
+          "icon": "network.svg",
+          "value": "Домены",
+          "services": [
+            {
+              "title": "Купить домен",
+              "des": "От 790 тг",
+              "type": "service--primary",
+              "subDes": "ПОПУЛЯРНЫЙ ВЫБОР",
+              "path": "/test"
+            },
+            {
+              "title": "Трансфер доменов",
+              "des": "Удобное управление и быстрый перенос",
+              "type": "",
+              "subDes": "",
+              "path": "/test"
+            },
+            {
+              "title": "WHOIS",
+              "des": "Проверка домена",
+              "type": "",
+              "subDes": "",
+              "path": "/test"
+            }
+          ]
+        },
+        {
           "id": 7,
           "icon": "hosting.svg",
           "value": "Хостинг",
@@ -466,8 +494,7 @@
               "id": 1,
               "child": [
                 1,
-                2,
-                3
+                2
               ]
             },
             {
@@ -530,8 +557,7 @@
               "id": 1,
               "child": [
                 1,
-                2,
-                3
+                2
               ]
             },
             {
@@ -557,6 +583,788 @@
             5
           ],
           "widgetUrl": "https://crm.nls.kz/upload/crm/site_button/loader_3_h2wczc.js"
+        },
+        {
+          "value": "Актобе",
+          "id": 3,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Конаев",
+          "id": 4,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Атырау",
+          "id": 5,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Семей",
+          "id": 6,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Усть-Каменогорск",
+          "id": 7,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Тараз",
+          "id": 8,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Талдыкорган",
+          "id": 9,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Уральск",
+          "id": 10,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Караганда",
+          "id": 11,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Костанай",
+          "id": 12,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Кызылорда",
+          "id": 13,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Актау",
+          "id": 14,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Павлодар",
+          "id": 15,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Петропавловск",
+          "id": 16,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Туркестан",
+          "id": 17,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Жезказган",
+          "id": 18,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Кокшетау",
+          "id": 19,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
         }
       ]
     },
@@ -11510,6 +12318,34 @@
           ]
         },
         {
+          "id": 6,
+          "icon": "network.svg",
+          "value": "Домены",
+          "services": [
+            {
+              "title": "Купить домен",
+              "des": "От 790 тг",
+              "type": "service--primary",
+              "subDes": "ПОПУЛЯРНЫЙ ВЫБОР",
+              "path": "/test"
+            },
+            {
+              "title": "Трансфер доменов",
+              "des": "Удобное управление и быстрый перенос",
+              "type": "",
+              "subDes": "",
+              "path": "/test"
+            },
+            {
+              "title": "WHOIS",
+              "des": "Проверка домена",
+              "type": "",
+              "subDes": "",
+              "path": "/test"
+            }
+          ]
+        },
+        {
           "id": 7,
           "icon": "hosting.svg",
           "value": "Хостинг",
@@ -11673,8 +12509,7 @@
               "id": 1,
               "child": [
                 1,
-                2,
-                3
+                2
               ]
             },
             {
@@ -11737,8 +12572,7 @@
               "id": 1,
               "child": [
                 1,
-                2,
-                3
+                2
               ]
             },
             {
@@ -11764,6 +12598,788 @@
             5
           ],
           "widgetUrl": "https://crm.nls.kz/upload/crm/site_button/loader_3_h2wczc.js"
+        },
+        {
+          "value": "Актобе",
+          "id": 3,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Конаев",
+          "id": 4,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Атырау",
+          "id": 5,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Семей",
+          "id": 6,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Усть-Каменогорск",
+          "id": 7,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Тараз",
+          "id": 8,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Талдыкорган",
+          "id": 9,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Уральск",
+          "id": 10,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Караганда",
+          "id": 11,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Костанай",
+          "id": 12,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Кызылорда",
+          "id": 13,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Актау",
+          "id": 14,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Павлодар",
+          "id": 15,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Петропавловск",
+          "id": 16,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Туркестан",
+          "id": 17,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Жезказган",
+          "id": 18,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
+        },
+        {
+          "value": "Кокшетау",
+          "id": 19,
+          "headerMenuItems": [
+            5,
+            7,
+            8,
+            9
+          ],
+          "footerServicesList": [
+            4,
+            6,
+            7,
+            8
+          ],
+          "extraServicesList": [
+            4,
+            6
+          ],
+          "mainServices": [
+            {
+              "id": 3,
+              "child": [
+                6,
+                7
+              ]
+            },
+            {
+              "id": 2,
+              "child": [
+                4
+              ]
+            },
+            {
+              "id": 1,
+              "child": []
+            }
+          ],
+          "headerTopNavigator": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "widgetUrl": ""
         }
       ]
     },

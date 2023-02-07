@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto">
+  <v-card class="mx-auto" :disabled="!cardData.item.show">
     <v-card-title>
       <v-row>
         <v-col cols="10">
@@ -75,15 +75,24 @@
               :rules="validateInputs.blockTitle"
               counter
             ></v-textarea>
-            <v-textarea
-              v-if="el.path.path"
-              rows="1"
-              label="Ссылка"
-              v-model="el.path.path"
-              required
-              :rules="validateInputs.blockPath"
-              counter
-            ></v-textarea>
+            <div>
+              <v-textarea
+                v-if="el.path.path"
+                rows="1"
+                label="Ссылка"
+                v-model="el.path.path"
+                required
+                counter
+              ></v-textarea>
+              <v-textarea
+                v-else
+                rows="1"
+                label="Ссылка"
+                v-model="el.path"
+                required
+                counter
+              ></v-textarea>
+            </div>
             <v-row>
               <v-col cols="6">
                 <v-textarea

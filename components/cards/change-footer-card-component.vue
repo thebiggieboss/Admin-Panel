@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="mx-auto" v-if="cardData.list">
+    <v-card class="mx-auto">
       <v-card-title>
         <v-textarea
           rows="1"
@@ -48,44 +48,6 @@
         />
       </v-card-actions>
     </v-card>
-    <v-card class="mx-auto" v-else>
-      <v-card-title>
-        <v-textarea
-          rows="1"
-          label="Услуг"
-          v-model="cardData.title"
-          required
-          :rules="validateInputs.blockTitle"
-          counter
-        ></v-textarea>
-      </v-card-title>
-      <v-card-text>
-        <v-textarea
-          rows="1"
-          label="Иконка"
-          v-model="cardData.icon"
-          type="text"
-          :rules="validateInputs.blockIcon"
-        >
-        </v-textarea>
-        <v-textarea
-          rows="1"
-          label="Описание"
-          v-model="cardData.description"
-          type="text"
-          :rules="validateInputs.blockTitle"
-        >
-        </v-textarea>
-        <v-textarea
-          rows="1"
-          label="Ссылка"
-          v-model="cardData.path"
-          type="text"
-          :rules="validateInputs.blockPath"
-        >
-        </v-textarea>
-      </v-card-text>
-    </v-card>
   </div>
 </template>
 
@@ -100,11 +62,6 @@ export default {
     cardData: {
       type: Object,
       default: () => ({})
-    }
-  },
-  data() {
-    return {
-
     }
   },
   methods: {

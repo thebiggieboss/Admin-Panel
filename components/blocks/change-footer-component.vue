@@ -1,16 +1,32 @@
 <template>
   <div class="pb-16 pt-16">
+    <select-city-component :city-list="dataI18n" />
     <data-table-component :data-table="footerItems.key">
       <v-form ref="form" @submit.prevent="submit">
         <v-row>
           <v-col
-            v-for="(item, index) in footerItems.navigation"
-            :key="index"
-            cols="12"
             lg="3"
-            class="pa-6"
+            cols="12"
           >
-          <change-footer-card-component :card-data="item"/>
+            <footer-services-card-component :card-data="{footerServices, loc: location, obj: footerItems.navigation.services}"/>
+          </v-col>
+          <v-col
+            lg="3"
+            cols="12"
+          >
+          <change-footer-card-component :card-data="footerItems.navigation.store"/>
+          </v-col>
+          <v-col
+            lg="3"
+            cols="12"
+          >
+            <change-footer-card-component :card-data="footerItems.navigation.legalEntities"/>
+          </v-col>
+          <v-col
+            lg="3"
+            cols="12"
+          >
+          <footer-individual-card-component :card-data="footerItems.navigation.individuals"/>
           </v-col>
         </v-row>
         <footer-contacts-card-component :card-data="footerItems"/>
@@ -38,10 +54,16 @@ import AddNewCardComponent from "@/components/cards/add-new-card-component.vue";
 import DeleteCardComponent from "@/components/cards/delete-card-component.vue";
 import ChangeFooterCardComponent from "@/components/cards/change-footer-card-component.vue";
 import FooterContactsCardComponent from "@/components/cards/footer-contacts-card-component.vue";
+import SelectCityComponent from "@/components/blocks/select-city-component.vue";
+import FooterIndividualCardComponent from "@/components/cards/footer-individual-card-component.vue";
+import FooterServicesCardComponent from "@/components/cards/footer-services-card-component.vue";
 
 export default {
   name: "change-footer-component",
   components: {
+    FooterServicesCardComponent,
+    FooterIndividualCardComponent,
+    SelectCityComponent,
     FooterContactsCardComponent,
     ChangeFooterCardComponent,
     DeleteCardComponent,
@@ -62,9 +84,21 @@ export default {
     };
   },
   computed: {
+    location() {
+      let city = this.dataI18n[this.$store.state.lang.selectLang].selectCity.list;
+      return city.find((item) => item.id === this.$store.state.lang.location);
+    },
     footerItems() {
       return this.dataI18n[this.$store.state.lang.selectLang].footer;
     },
+    footerServices() {
+      return this.footerItems.navigation.services.list.map(item => {
+        return {
+          ...item,
+          show: this.location.footerServicesList.some(el => el === item.id)
+        }
+      })
+    }
   },
   methods: {
     submit() {

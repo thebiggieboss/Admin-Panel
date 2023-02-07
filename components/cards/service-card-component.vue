@@ -1,13 +1,27 @@
 <template>
   <v-row>
+    <v-col cols="12">
+      <v-icon
+        v-if="!cardData.block.show"
+        @click="showCard(cardData.block.id)"
+      >
+        mdi-eye-off
+      </v-icon>
+      <v-icon
+        v-if="cardData.block.show"
+        @click="hideCard(cardData.block.id)"
+      >
+        mdi-eye
+      </v-icon>
+    </v-col>
     <v-col cols="12" lg="8">
-      <v-card elevation="2">
+      <v-card elevation="2" :disabled="!cardData.block.show">
         <v-sheet class="v-sheet--box">
           <v-card-title>
             <v-textarea
               rows="1"
               label="Название блока"
-              v-model="cardData.title"
+              v-model="cardData.block.title"
               required
               :rules="validateInputs.blockTitle"
               counter
@@ -17,7 +31,7 @@
             <v-textarea
               rows="1"
               label="Описание блока"
-              v-model="cardData.des"
+              v-model="cardData.block.des"
               required
               :rules="validateInputs.blockTitle"
               counter
@@ -25,7 +39,7 @@
             <v-textarea
               rows="1"
               label="Иконка блока"
-              v-model="cardData.icon"
+              v-model="cardData.block.icon"
               required
               :rules="validateInputs.blockIcon"
               counter
@@ -33,7 +47,7 @@
             <v-textarea
               rows="1"
               label="Ссылка "
-              v-model="cardData.path"
+              v-model="cardData.block.path"
               required
               :rules="validateInputs.blockPath"
               counter
@@ -41,7 +55,7 @@
             <v-textarea
               rows="1"
               label="Кнопка"
-              v-model="cardData.pathName"
+              v-model="cardData.block.pathName"
               required
               :rules="validateInputs.blockTitle"
               counter
@@ -51,7 +65,7 @@
       </v-card>
     </v-col>
     <v-col cols="12" lg="4">
-       <v-card elevation="2" v-for="(item, index) in cardData.list" :key="index">
+       <v-card elevation="2" v-for="(item, index) in cardData.block.list" :key="index" :disabled="!cardData.block.show">
          <v-sheet class="v-sheet--box">
            <v-card-text>
              <v-textarea
@@ -85,6 +99,17 @@ export default {
     cardData: {
       type: Object,
       default: () => ({})
+    }
+  },
+  methods: {
+    showCard(id) {
+      let arr = this.cardData.loc.find(item => item.id === this.cardData.item.id)
+      this.arrAdder(arr.child, id)
+      arr.child.sort((a, b) => a - b)
+    },
+    hideCard(id) {
+      let arr = this.cardData.loc.find(item => item.id === this.cardData.item.id)
+      this.arrDeleter(arr.child, arr.child.indexOf(id))
     }
   }
 
