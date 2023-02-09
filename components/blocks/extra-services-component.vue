@@ -1,103 +1,60 @@
 <template>
   <div class="pt-16 pb-16">
     <select-city-component :city-list="dataI18n" />
-    <data-table-component :data-table="extraServices.key">
-      <v-form ref="form" @submit.prevent="submit">
-        <v-row>
-          <v-col cols="12">
-            <v-card>
-              <v-card-title>
-                <v-textarea
-                  rows="1"
-                  label="Заголовок"
-                  v-model="extraServices.title"
-                  required
-                  :rules="validateInputs.blockTitle"
-                  counter
-                ></v-textarea>
-              </v-card-title>
-              <v-card-text>
-                <v-row>
-                  <v-col
-                    v-for="(item, index) in extraServiceList"
-                    :key="index"
-                    cols="12"
-                    md="4"
-                  >
-                    <v-sheet class="v-sheet--box">
-                      <v-row class="mb-2">
-                        <v-col cols="12">
-                          <delete-card-component
-                            :card-data="'Удалить'"
-                            @change="deleteCard(item.id, index)"
-                          />
-                            <v-icon
-                              v-if="item.show"
-                              @click="showCard(item.id)"
-                            >
-                              mdi-eye-off
-                            </v-icon>
-                          <v-icon
-                            v-if="!item.show"
-                            @click="hideCard(item.id)"
-                          >
-                            mdi-eye
-                          </v-icon>
-                        </v-col>
-                      </v-row>
-                      <v-card elevation="0" :disabled="item.show">
-                        <v-textarea
-                          rows="1"
-                          label="Название блока"
-                          v-model="item.title"
-                          required
-                          :rules="validateInputs.blockTitle"
-                          counter
-                        ></v-textarea>
-                        <v-textarea
-                          rows="2"
-                          label="Описание блока"
-                          v-model="item.des"
-                          required
-                          :rules="validateInputs.longerText"
-                          counter
-                        ></v-textarea>
-                        <v-textarea
-                          rows="1"
-                          label="Ссылка"
-                          v-model="item.path"
-                          required
-                          :rules="validateInputs.blockPath"
-                          counter
-                        ></v-textarea>
-                      </v-card>
-                    </v-sheet>
-                  </v-col>
-                  <v-col cols="12">
-                    <add-new-card-component
-                      :card-data="0"
-                      @change="addCard(extraServices.list)"
-                    />
-                  </v-col>
-                </v-row>
-              </v-card-text>
-            </v-card>
-          </v-col>
-          <v-col cols="12">
-            <v-card-actions>
+    <v-card>
+      <v-card-title>
+        <v-textarea
+          rows="1"
+          label="Заголовок"
+          v-model="extraServices.title"
+          required
+          :rules="validateInputs.blockTitle"
+          counter
+          hide-details
+        ></v-textarea>
+      </v-card-title>
+      <v-tabs
+        v-model="tab"
+        background-color="primary"
+        dark
+        centered
+        grow
+      >
+        <v-tab
+          v-for="(item, index) in Object.entries(allList)"
+          :key="index"
+        >
+          {{ item[0] }}
+        </v-tab>
+      </v-tabs>
+
+      <v-tabs-items v-model="tab">
+        <v-form ref="form" @submit.prevent="submit">
+          <v-tab-item
+            v-for="(item, index) in Object.entries(allList)"
+            :key="index"
+          >
               <v-row>
                 <v-col cols="12">
-                  <div class="d-flex align-center" style="gap: 32px">
-                    <v-btn type="submit"> Сохранить </v-btn>
-                    <v-btn @click="GetI18n"> Вернуть данные </v-btn>
-                  </div>
+                  <extra-services-card-component :card-data="{item, loc: location}" @addCard="addCard" @deleteCard="deleteCard"/>
+                </v-col>
+                <v-col cols="12">
+                  <v-card-actions>
+                    <v-row>
+                      <v-col cols="12">
+                        <div class="d-flex align-center" style="gap: 32px">
+                          <v-btn type="submit"> Сохранить </v-btn>
+                          <v-btn @click="GetI18n"> Вернуть данные </v-btn>
+                        </div>
+                      </v-col>
+                    </v-row>
+                  </v-card-actions>
                 </v-col>
               </v-row>
-            </v-card-actions>
-          </v-col>
-        </v-row>
-      </v-form>
-    </data-table-component>
+          </v-tab-item>
+        </v-form>
+      </v-tabs-items>
+    </v-card>
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
@@ -113,10 +70,12 @@ import AddNewCardComponent from "@/components/cards/add-new-card-component.vue";
 import AgreeToEditComponent from "@/components/dialogs/agree-to-edit-component.vue";
 import SelectCityComponent from "@/components/blocks/select-city-component.vue";
 import AddDisabledCardComponent from "@/components/cards/add-disabled-card-component.vue";
+import ExtraServicesCardComponent from "@/components/cards/extra-services-card-component.vue";
 
 export default {
   name: "extra-services-component",
   components: {
+    ExtraServicesCardComponent,
     AddDisabledCardComponent,
     SelectCityComponent,
     AgreeToEditComponent,
@@ -132,26 +91,30 @@ export default {
   },
   data() {
     return {
+      tab: null,
       dialogEdit: false,
       dataI18n: this.dataProps,
     };
   },
+  watch: {
+    extraServices(e) {
+      console.log(e)
+    }
+  },
   computed: {
     location() {
       let city = this.dataI18n[this.$store.state.lang.selectLang].selectCity.list;
-      return city.find((item) => item.id === this.$store.state.lang.location);
+      return city.find((item) => item.id === this.$store.state.lang.location).extraServicesList.sort((a, b) => a - b);
     },
     extraServices() {
       return this.dataI18n[this.$store.state.lang.selectLang].extraServicesList
     },
-    extraServiceList() {
-      return this.extraServices.list.map(item => {
-        return {
-          ...item,
-          show: !this.location.extraServicesList.some((menu) => menu === item.id)
-        }
-      })
-    },
+    allList() {
+      return {
+        active: this.extraServices.list.filter(item => this.location.some((menu) => menu === item.id)),
+        disabled: this.extraServices.list.filter(item => !this.location.some((menu) => menu === item.id))
+      }
+    }
   },
   methods: {
     submit() {
@@ -164,28 +127,26 @@ export default {
       }
       this.dialogEdit = true;
     },
-    deleteCard(id, index) {
-      this.arrDeleter(this.extraServices.list, index)
-      this.hideCard(id)
-    },
-    addCard(item) {
-      let id = item[item.length -1].id
+    addCard() {
+      let id = this.extraServices.list[this.extraServices.list.length -1].id
       let params = {
         id: ++id,
         path: "",
         title: "",
         des: ""
       }
-      this.arrAdder(item, params)
-      this.showCard(id)
+      this.arrAdder(this.extraServices.list, params)
+      this.location.push(id)
     },
-    showCard(id) {
-      this.arrAdder(this.location.extraServicesList, id)
-      this.location.extraServicesList.sort((a, b) => a - b)
+    deleteCard(elem) {
+      let cities =  this.dataI18n[this.$store.state.lang.selectLang].selectCity.list
+      cities.map(item => item.extraServicesList.filter(id => {
+        if(id === elem.id) {
+          return item.extraServicesList.splice(item.extraServicesList.indexOf(elem.id), 1)
+        }
+      }))
+      this.arrDeleter(this.extraServices.list, this.extraServices.list.indexOf(elem))
     },
-    hideCard(id) {
-      this.arrDeleter(this.location.extraServicesList, this.location.extraServicesList.indexOf(id))
-    }
   },
 };
 </script>
