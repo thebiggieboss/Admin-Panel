@@ -1,27 +1,27 @@
 <template>
   <v-row>
+<!--    <v-col cols="12">-->
+<!--      <v-icon-->
+<!--        v-if="!cardData.block.show"-->
+<!--        @click="showCard(cardData.block.id)"-->
+<!--      >-->
+<!--        mdi-eye-off-->
+<!--      </v-icon>-->
+<!--      <v-icon-->
+<!--        v-if="cardData.block.show"-->
+<!--        @click="hideCard(cardData.block.id)"-->
+<!--      >-->
+<!--        mdi-eye-->
+<!--      </v-icon>-->
+<!--    </v-col>-->
     <v-col cols="12">
-      <v-icon
-        v-if="!cardData.block.show"
-        @click="showCard(cardData.block.id)"
-      >
-        mdi-eye-off
-      </v-icon>
-      <v-icon
-        v-if="cardData.block.show"
-        @click="hideCard(cardData.block.id)"
-      >
-        mdi-eye
-      </v-icon>
-    </v-col>
-    <v-col cols="12">
-      <v-card elevation="2" :disabled="!cardData.block.show">
+      <v-card elevation="2">
         <v-sheet class="v-sheet--box">
           <v-card-title>
             <v-textarea
               rows="1"
               label="Название блока"
-              v-model="cardData.block.title"
+              v-model="cardData.title"
               required
               :rules="validateInputs.blockTitle"
               counter
@@ -31,7 +31,7 @@
             <v-textarea
               rows="1"
               label="Описание блока"
-              v-model="cardData.block.des"
+              v-model="cardData.des"
               required
               :rules="validateInputs.blockTitle"
               counter
@@ -39,7 +39,7 @@
             <v-textarea
               rows="1"
               label="Иконка блока"
-              v-model="cardData.block.icon"
+              v-model="cardData.icon"
               required
               :rules="validateInputs.blockTitle"
               counter
@@ -47,7 +47,7 @@
             <v-textarea
               rows="1"
               label="Ссылка "
-              v-model="cardData.block.path"
+              v-model="cardData.path"
               required
               :rules="validateInputs.blockTitle"
               counter
@@ -55,7 +55,7 @@
             <v-textarea
               rows="1"
               label="Кнопка"
-              v-model="cardData.block.pathName"
+              v-model="cardData.pathName"
               required
               :rules="validateInputs.blockTitle"
               counter
@@ -76,17 +76,17 @@ export default {
       default: () => ({})
     }
   },
-  methods: {
-    showCard(id) {
-      let arr = this.cardData.loc.find(item => item.id === this.cardData.item.id)
-      this.arrAdder(arr.child, id)
-      arr.child.sort((a, b) => a - b)
-    },
-    hideCard(id) {
-      let arr = this.cardData.loc.find(item => item.id === this.cardData.item.id)
-      this.arrDeleter(arr.child, arr.child.indexOf(id))
-    }
-  }
+  // methods: {
+  //   showCard(id) {
+  //     let arr = this.cardData.loc.find(item => item.id === this.cardData.item.id)
+  //     this.arrAdder(arr.child, id)
+  //     arr.child.sort((a, b) => a - b)
+  //   },
+  //   hideCard(id) {
+  //     let arr = this.cardData.loc.find(item => item.id === this.cardData.item.id)
+  //     this.arrDeleter(arr.child, arr.child.indexOf(id))
+  //   }
+  // }
 }
 </script>
 

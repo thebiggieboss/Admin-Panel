@@ -6,8 +6,8 @@
         <div  v-for="(item, index) in mainServicesBlocks" :key="index">
           <v-row>
             <v-col v-for="(block, blockIndex) in item.list" :key="block.id" cols="12" :md="item.type === 'grid-4' ? 6 : 4">
-              <service-card-component v-if="block.list" :card-data="{item, block, loc: location.mainServices}"/>
-              <service-full-card-component v-else :card-data="{item, block, loc: location.mainServices}"/>
+              <service-card-component v-if="block.list" :card-data="block"/>
+              <service-full-card-component v-else :card-data="block"/>
             </v-col>
           </v-row>
         </div>
@@ -66,13 +66,13 @@ export default {
       return this.dataI18n[this.$store.state.lang.selectLang].mainServices;
     },
     mainServicesBlocks() {
-      const arr = this.location.mainServices.flatMap(item => item.child)
-       return this.mainService.blocks.map(item => {
-         return {
-           ...item,
-           list: item.list.map(list => ({...list, show: arr.some(el => list.id === el)}))
-         }
-       })
+      return this.location.mainServices.map((service) => {
+        const block = this.mainService.blocks.find((block) => block.id === service.id);
+        return {
+          ...block,
+          list: block.list.filter((item) => service.child.some((ch) => ch === item.id)),
+        };
+      });
     },
   },
   methods: {
