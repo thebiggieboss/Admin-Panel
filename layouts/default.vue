@@ -8,66 +8,94 @@
       app
       dark
     >
-      <v-list>
-        <v-list-item class="justify-center">
-          <v-list-item-avatar width="96" height="96">
-            <v-img :src="images.adminIcon"></v-img>
-          </v-list-item-avatar>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content class="text-center">
-            <v-list-item-title class="text-h6"> Big Brother </v-list-item-title>
-          </v-list-item-content>
-          <v-btn icon @click="logout">
-            <v-img :src="images.exitIcon" max-height="28" max-width="28"></v-img>
-          </v-btn>
-        </v-list-item>
-        <v-list-item router :to="'/'">
-          <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title v-text="'Dashboard'"> </v-list-item-title>
-        </v-list-item>
-        <v-list-group
-          v-for="(item, index) in navigationItems"
-          :key="index"
-          :value="false"
-          :prepend-icon="item.icon"
-        >
-          <template v-slot:activator>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </template>
-          <v-list-item
-            v-for="(deepItem, index) in item.list"
-            link
-            :key="index"
-            :to="deepItem.to"
-            router
-          >
-            <v-list-item-icon class="mt-0 mb-0 mr-0 align-self-center">
-              <v-img
-                :src="images.navigationIcon"
-                max-height="22"
-                max-width="22"
-              >
-              </v-img>
-            </v-list-item-icon>
-            <v-list-item-title>{{ deepItem.title }}</v-list-item-title>
+      <div class="d-flex flex-column justify-space-between fill-height" style="gap: 32px">
+        <div>
+          <v-list-item class="justify-center">
+            <v-list-item-avatar width="96" height="96">
+              <v-img :src="images.adminIcon"></v-img>
+            </v-list-item-avatar>
           </v-list-item>
-        </v-list-group>
-        <v-list-item router :to="'/news'">
-          <v-list-item-icon>
-            <v-icon>mdi-newspaper</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title v-text="'Новости'"> </v-list-item-title>
-        </v-list-item>
-        <v-list-item router :to="'/media'">
-          <v-list-item-icon>
-            <v-icon>mdi-image</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title v-text="'Картинки'"> </v-list-item-title>
-        </v-list-item>
-      </v-list>
+          <v-list-item>
+            <v-list-item-content class="text-center">
+              <v-list-item-title class="text-h6"> Big Brother </v-list-item-title>
+            </v-list-item-content>
+            <v-btn icon @click="logout">
+              <v-img :src="images.exitIcon" max-height="28" max-width="28"></v-img>
+            </v-btn>
+          </v-list-item>
+          <v-list-item router :to="'/'">
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="'Dashboard'"> </v-list-item-title>
+          </v-list-item>
+          <v-list-group
+            v-for="(item, index) in navigationItems"
+            :key="index"
+            :value="false"
+            :prepend-icon="item.icon"
+          >
+            <template v-slot:activator>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </template>
+            <v-list-item
+              v-for="(deepItem, index) in item.list"
+              link
+              :key="index"
+              :to="deepItem.to"
+              router
+            >
+              <v-list-item-icon class="mt-0 mb-0 mr-0 align-self-center">
+                <v-img
+                  :src="images.navigationIcon"
+                  max-height="22"
+                  max-width="22"
+                >
+                </v-img>
+              </v-list-item-icon>
+              <v-list-item-title>{{ deepItem.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list-group>
+          <v-list-item router :to="'/news'">
+            <v-list-item-icon>
+              <v-icon>mdi-newspaper</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="'Новости'"> </v-list-item-title>
+          </v-list-item>
+          <v-list-item router :to="'/media'">
+            <v-list-item-icon>
+              <v-icon>mdi-image</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title v-text="'Картинки'"> </v-list-item-title>
+          </v-list-item>
+        </div>
+        <div>
+          <v-list-item>
+            <v-menu offset-y top >
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  color="primary"
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  block
+                >
+                  Versions
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item
+                  v-for="(item, index) in versionsList"
+                  :key="index"
+                  color="primary"
+                >
+                  <v-list-item-title v-html="item"></v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </v-list-item>
+        </div>
+      </div>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -133,6 +161,7 @@ export default {
       selectLang: this.$store.state.lang.selectLang,
       lang: [],
       navigation: [],
+      versionsList: []
     };
   },
   watch: {
@@ -279,10 +308,12 @@ export default {
     ...mapActions({
       getLocation: "lang/getLocation",
     }),
-    async GetI18n() {
+    async GetI18nDefault() {
       try {
         const res = await getI18n()
-        this.lang = Object.keys(res.data)
+        this.lang = Object.keys(res.data.content)
+        this.versionsList = res.data.versions
+
       }catch (e) {
         this.$toast.open({
           message: e.message,
@@ -295,9 +326,8 @@ export default {
     },
   },
   async mounted() {
-    await this.GetI18n()
+    await this.GetI18nDefault()
     await Promise.all([this.getLocation()]);
-    // console.log(this.$store.getters["lang/getSelectLang"])
   },
 };
 </script>
@@ -305,6 +335,7 @@ export default {
 .default__lang-select {
   max-width: 90px;
 }
+
 @media screen and (max-width: 960px) {
   .default__main {
     display: none;

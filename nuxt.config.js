@@ -64,9 +64,9 @@ export default {
       lang: 'ru',
     },
   },
-  serverMiddleware: [
-    { path: "/api/v1/getLocale", handler: "~/server-middleware/rest.js" },
-  ],
+  // serverMiddleware: [
+  //   { path: "/api/v1/getLocale", handler: "~/server-middleware/rest.js" },
+  // ],
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/styles/variables.scss'],

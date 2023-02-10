@@ -1,5 +1,3 @@
-import i18n from '/static/i18n.json'
-import axios from "axios";
 import {getI18n} from "@/service/user";
 
 const defaultLang = 'ru'
@@ -31,7 +29,7 @@ export const actions = {
      const currentLang = this.$cookies.get("selectLang")
      try {
        const res = await getI18n();
-       const isHasLang = res.data.hasOwnProperty(currentLang)
+       const isHasLang = res.data.data.content.hasOwnProperty(currentLang)
        if(!isHasLang) {
          throw ''
        }

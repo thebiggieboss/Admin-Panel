@@ -42,10 +42,10 @@ export default {
     arrAdder(block, params) {
       return block.push(params)
     },
-    async GetI18n() {
+    async GetI18n(version) {
       try {
-        const res = await getI18n();
-        this.dataI18n = res.data;
+        const res = await getI18n(version);
+        this.dataI18n = res.data.content;
       } catch (e) {
         this.$toast.open({
           message: e.message,
@@ -57,8 +57,8 @@ export default {
       try {
         const res = await postI18n(data)
         this.$toast.open({
-          message: res.data.message,
-          type: res.data.success ? "success" : "error",
+          message: res.message,
+          type: res.success ? "success" : "error",
         });
       }catch (e) {
         this.$toast.open({

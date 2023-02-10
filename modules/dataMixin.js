@@ -5,10 +5,11 @@ export default {
     return {
     }
 },
-  async asyncData({app}) {
-    const {data} = await axios.get('http://192.168.9.88:3000/api/v1/getLocale')
+  async asyncData({app, store}) {
+    const BaseUrl = process.env.BASE_URL;
+    const {data} = await axios.get(`${BaseUrl}/api/v1/i18-content/get-locale`)
     return {
-      I18n: data,
+      I18n: data.data.content,
     }
   },
 }
