@@ -11,7 +11,10 @@ import dataMixin from "@/modules/dataMixin";
 export default {
   name: "private",
   mixins: [dataMixin],
-  components: {PrivateCalcComponent}
+  components: {PrivateCalcComponent},
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

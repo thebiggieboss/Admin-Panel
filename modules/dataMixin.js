@@ -16,7 +16,4 @@ export default {
       I18n: data.data.content,
     }
   },
-  created() {
-    this.$nuxt.$on('refreshPage', ($event) => this.$nuxt.refresh())
-  },
 }

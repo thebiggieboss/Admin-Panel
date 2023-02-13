@@ -16,6 +16,9 @@ export default {
   name: "wifi",
   components: {InternetWifiComponent, InternetCardsComponent, HowWeWorkComponent, },
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

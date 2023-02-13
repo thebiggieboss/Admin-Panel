@@ -12,6 +12,9 @@ export default {
   name: "colocation",
   components: {ColocationCharacteristicsComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

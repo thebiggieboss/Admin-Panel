@@ -16,6 +16,9 @@ export default {
   name: "internet",
   components: {InternetCardsComponent, HowWeWorkComponent, internetComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

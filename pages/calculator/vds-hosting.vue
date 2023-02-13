@@ -11,7 +11,10 @@ import dataMixin from "@/modules/dataMixin";
 export default {
   name: "vds-hosting",
   mixins: [dataMixin],
-  components: {VdsHostingCalcComponent}
+  components: {VdsHostingCalcComponent},
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

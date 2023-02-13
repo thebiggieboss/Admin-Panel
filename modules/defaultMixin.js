@@ -24,10 +24,12 @@ export default {
       return block.push(params)
     },
     async GetI18n() {
-      const version = this.$store.state.lang.version
+      // const version = this.$store.state.lang.version
       try {
-        const res = await getI18n(version);
+        const res = await getI18n();
         this.dataProps = res.data.data.content;
+        this.versionsList = res.data.data.versions
+        this.$store.commit('lang/setVersion', res.data.data.version)
       } catch (e) {
         this.$toast.open({
           message: e.message,
@@ -47,6 +49,8 @@ export default {
           message: e.message,
           type: e.success ? "success" : "error",
         });
+      }finally {
+        await this.GetI18n()
       }
     }
   },

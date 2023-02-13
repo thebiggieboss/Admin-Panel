@@ -11,7 +11,10 @@ import dataMixin from "@/modules/dataMixin";
 export default {
   name: "cloud",
   mixins: [dataMixin],
-  components: {CloudCalcComponent}
+  components: {CloudCalcComponent},
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

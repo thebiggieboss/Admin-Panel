@@ -12,6 +12,9 @@ export default {
   name: "server",
   components: {ServerCardsBlockComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

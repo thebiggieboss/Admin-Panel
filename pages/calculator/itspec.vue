@@ -11,7 +11,10 @@ import dataMixin from "@/modules/dataMixin";
 export default {
   name: "itspec",
   mixins:[dataMixin],
-  components: {ItSupportCalcComponent}
+  components: {ItSupportCalcComponent},
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

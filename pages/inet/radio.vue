@@ -20,6 +20,9 @@ export default {
     ConstructRadioBridgeComponent,
     HowWeWorkRadioComponent, InternetCardsComponent, InternetRadioChannelComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

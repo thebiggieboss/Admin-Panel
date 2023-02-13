@@ -12,6 +12,9 @@ export default {
   name: "why-choose",
   components: {ChangeChooseUsComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

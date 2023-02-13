@@ -11,7 +11,10 @@ import dataMixin from "@/modules/dataMixin";
 export default {
   name: "colocation",
   mixins: [dataMixin],
-  components: {ColocationCalcComponent}
+  components: {ColocationCalcComponent},
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

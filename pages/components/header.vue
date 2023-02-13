@@ -11,6 +11,9 @@ export default {
   name: "headerChange",
   components: {ChangeHeaderComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

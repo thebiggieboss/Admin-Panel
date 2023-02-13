@@ -12,6 +12,9 @@ export default {
   name: "main-services",
   components: {ChangeMainServicesComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

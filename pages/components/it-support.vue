@@ -12,6 +12,9 @@ export default {
   name: "it-support",
   components: {ItOutServicesComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

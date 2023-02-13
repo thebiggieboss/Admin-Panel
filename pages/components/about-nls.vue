@@ -14,6 +14,9 @@ export default {
   name: "about-nls",
   components: {ChangeAboutNlsComponent, ChangeAboutBannerComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

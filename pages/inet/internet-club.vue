@@ -14,6 +14,9 @@ export default {
   name: "internet-club",
   components: {HowWeWorkComponent, internetClubComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

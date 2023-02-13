@@ -12,6 +12,9 @@ export default {
   name: "vacancies",
   components: {ChangeVacanciesComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

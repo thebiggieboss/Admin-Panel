@@ -12,6 +12,9 @@ export default {
   name: "footerChange",
   components: {ChangeFooterComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

@@ -69,34 +69,7 @@
             <v-list-item-title v-text="'Картинки'"> </v-list-item-title>
           </v-list-item>
         </div>
-        <div>
-          <v-list-item>
-            <v-menu offset-y top >
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                  color="primary"
-                  dark
-                  v-bind="attrs"
-                  v-on="on"
-                  block
-                >
-                  Versions
-                </v-btn>
-              </template>
-              <v-list>
-                <v-list-item
-                  v-for="(item, index) in versionsList"
-                  :key="index"
-                  color="primary"
-                  :class="{'v-list-item--active': $store.state.lang.version === item}"
-                  @click="versionControl(item)"
-                >
-                  <v-list-item-title v-html="item"></v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-          </v-list-item>
-        </div>
+        <version-component />
       </div>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
@@ -144,9 +117,11 @@
 import { getI18n } from "@/service/user";
 import { mapActions } from "vuex";
 import dataMixin from "@/modules/dataMixin";
+import VersionComponent from "@/components/elements/version-component.vue";
 
 export default {
   name: "DefaultLayout",
+  components: {VersionComponent},
   mixins: [dataMixin],
   data() {
     return {
@@ -165,7 +140,6 @@ export default {
       selectLang: this.$store.state.lang.selectLang,
       lang: [],
       navigation: [],
-      versionsList: []
     };
   },
   watch: {
@@ -312,15 +286,10 @@ export default {
     ...mapActions({
       getLocation: "lang/getLocation",
     }),
-    async versionControl(e) {
-      this.$store.commit('lang/setVersion', e)
-      this.$nuxt.$emit('refreshPage')
-    },
     async GetI18nDefault() {
       try {
         const res = await getI18n()
         this.lang = Object.keys(res.data.data.content)
-        this.versionsList = res.data.data.versions
 
       }catch (e) {
         this.$toast.open({

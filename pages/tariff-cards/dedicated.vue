@@ -12,6 +12,9 @@ export default {
   name: "dedicated",
   components: {DedicatedCardsBlockComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

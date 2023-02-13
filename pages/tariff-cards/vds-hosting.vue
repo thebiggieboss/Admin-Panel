@@ -12,6 +12,9 @@ export default {
   name: "vds-hosting",
   components: {VdsHostingCardsBlockComponent},
   mixins: [dataMixin],
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

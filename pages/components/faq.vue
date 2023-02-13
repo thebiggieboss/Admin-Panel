@@ -12,6 +12,9 @@ export default {
   name: "faq",
   mixins: [dataMixin],
   components: {ChangeFaqComponent},
+  created() {
+    this.$nuxt.$on('refreshPage', () => this.$nuxt.refresh())
+  },
 }
 </script>
 

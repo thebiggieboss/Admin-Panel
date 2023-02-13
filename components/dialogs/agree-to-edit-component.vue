@@ -51,7 +51,6 @@ export default {
   methods: {
     async submit() {
       await this.PostI18n(this.mainData)
-      await this.GetI18n()
       this.$emit('close')
     }
   },
