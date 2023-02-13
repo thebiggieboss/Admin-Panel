@@ -12,7 +12,7 @@
                     label="Главный титул"
                     v-model="inetClub.title"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-card-title>
@@ -22,7 +22,7 @@
                     label="Под заголовок"
                     v-model="inetClub.subTitle"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                   <v-textarea
@@ -30,7 +30,7 @@
                     label="Описание"
                     v-model="inetClub.des"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-card-text>
@@ -47,7 +47,7 @@
                       label="Описание"
                       v-model="inetClub['services-list'][index]"
                       required
-                      :rules="validateInputs.blockTitle"
+                      :rules="validateInputs.text"
                       counter
                     ></v-textarea>
                   </div>
@@ -71,7 +71,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -92,12 +92,11 @@ export default {
   data() {
     return {
       dialogEdit: false,
-      dataI18n: this.dataProps
     };
   },
   computed: {
     inetClub() {
-      return this.dataI18n[this.$store.state.lang.selectLang].internetClubHead
+      return this.dataProps[this.$store.state.lang.selectLang].internetClubHead
     }
   },
   methods: {

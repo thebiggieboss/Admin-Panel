@@ -12,7 +12,7 @@
                     label="Главный титул"
                     v-model="headInternet.des"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-card-title>
@@ -22,7 +22,7 @@
                     label="Заголовок"
                     v-model="headInternet.title"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                   <v-textarea
@@ -30,7 +30,7 @@
                     label="Описание"
                     v-model="headInternet.subDes"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                   <v-textarea
@@ -38,7 +38,7 @@
                     label="Под описание"
                     v-model="headInternet.longDes"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-card-text>
@@ -55,7 +55,7 @@
                       label="Заголовок"
                       v-model="headInternet.list[index]"
                       required
-                      :rules="validateInputs.blockTitle"
+                      :rules="validateInputs.text"
                       counter
                     ></v-textarea>
                   </div>
@@ -79,7 +79,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -100,12 +100,11 @@ export default {
   data() {
     return {
       dialogEdit: false,
-      dataI18n: this.dataProps
     };
   },
   computed: {
     headInternet() {
-      return this.dataI18n[this.$store.state.lang.selectLang].internetHead
+      return this.dataProps[this.$store.state.lang.selectLang].internetHead
     }
   },
   methods: {

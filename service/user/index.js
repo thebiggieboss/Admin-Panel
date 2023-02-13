@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Provider } from "@/service/base";
 import {ServerProvider} from "@/service/serverBase";
 const authUrl = "/v1/login";
@@ -74,7 +73,7 @@ function DeleteImage(id) {
   return Provider.delete(deleteImageUrl(id))
 }
 function getI18n(version) {
-  return Provider.get(getI18nUrl, {
+  return ServerProvider.get(getI18nUrl, {
     params: {
       version
     }

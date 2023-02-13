@@ -28,7 +28,7 @@
             label="Название"
             v-model="elem.value"
             type="text"
-            :rules="validateInputs.blockTitle"
+            :rules="validateInputs.text"
           >
           </v-textarea>
           <v-textarea
@@ -36,7 +36,7 @@
             label="Ссылка"
             v-model="elem.path"
             type="text"
-            :rules="validateInputs.blockPath"
+            :rules="validateInputs.text"
           >
           </v-textarea>
         </v-sheet>

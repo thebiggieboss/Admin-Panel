@@ -11,7 +11,7 @@
                   label="Заголовок"
                   v-model="radioBridge.title"
                   required
-                  :rules="validateInputs.blockTitle"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
                 <v-textarea
@@ -19,7 +19,7 @@
                   label="Под заголовок"
                   v-model="radioBridge.des"
                   required
-                  :rules="validateInputs.blockTitle"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
               </v-col>
@@ -33,7 +33,7 @@
                   label="Описание"
                   v-model="radioBridge.list[index]"
                   required
-                  :rules="validateInputs.blockTitle"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
               </div>
@@ -43,7 +43,7 @@
               label="Под описание"
               v-model="radioBridge.subDes"
               required
-              :rules="validateInputs.blockTitle"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
           </v-card-text>
@@ -67,7 +67,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -88,12 +88,11 @@ export default {
   data() {
     return {
       dialogEdit: false,
-      dataI18n: this.dataProps
     };
   },
   computed: {
     radioBridge() {
-      return this.dataI18n[this.$store.state.lang.selectLang].constructRadioBridge
+      return this.dataProps[this.$store.state.lang.selectLang].constructRadioBridge
     }
   },
   methods: {

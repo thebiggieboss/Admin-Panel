@@ -12,7 +12,7 @@
                     label="Заголовок"
                     v-model="item.title"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                   <v-textarea
@@ -20,7 +20,7 @@
                     label="Описание"
                     v-model="item.description"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                   <v-textarea
@@ -28,7 +28,7 @@
                     label="Иконка"
                     v-model="item.icon"
                     required
-                    :rules="validateInputs.blockIcon"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-card-text>
@@ -51,7 +51,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -72,12 +72,11 @@ export default {
   data() {
     return {
       dialogEdit: false,
-      dataI18n: this.dataProps
     };
   },
   computed: {
     howWork() {
-      return this.dataI18n[this.$store.state.lang.selectLang].howWeWork
+      return this.dataProps[this.$store.state.lang.selectLang].howWeWork
     }
   },
   methods: {

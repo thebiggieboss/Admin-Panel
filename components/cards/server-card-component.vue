@@ -10,7 +10,7 @@
                label="Название"
                v-model="item.title"
                required
-               :rules="validateInputs.blockTitle"
+               :rules="validateInputs.text"
                counter
              ></v-textarea>
            </v-col>
@@ -20,7 +20,7 @@
                label="Иконка"
                v-model="item.icon"
                required
-               :rules="validateInputs.blockIcon"
+               :rules="validateInputs.text"
                counter
              ></v-textarea>
            </v-col>
@@ -32,7 +32,7 @@
             label="Описание"
             v-model="item.des"
             required
-            :rules="validateInputs.blockTitle"
+            :rules="validateInputs.text"
             counter
           ></v-textarea>
           <v-textarea
@@ -40,7 +40,7 @@
             label="Ссылка"
             v-model="item.path"
             required
-            :rules="validateInputs.blockTitle"
+            :rules="validateInputs.text"
             counter
           ></v-textarea>
           <v-textarea
@@ -48,7 +48,7 @@
             label="Конопка"
             v-model="item.value"
             required
-            :rules="validateInputs.blockTitle"
+            :rules="validateInputs.text"
             counter
           ></v-textarea>
         </v-card-text>
@@ -59,7 +59,7 @@
                 label="List"
                 v-model="item['list-content'][listIndex]"
                 required
-                :rules="validateInputs.blockTitle"
+                :rules="validateInputs.text"
                 counter
               ></v-textarea>
             </v-sheet>
@@ -71,7 +71,7 @@
               label="List"
               v-model="price.fromPrice"
               required
-              :rules="validateInputs.lessText"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
             <v-textarea
@@ -79,7 +79,7 @@
               label="List"
               v-model="price.price"
               required
-              :rules="validateInputs.lessText"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
             <v-textarea
@@ -87,7 +87,7 @@
               label="List"
               v-model="price.icon"
               required
-              :rules="validateInputs.lessText"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
             <v-textarea
@@ -95,7 +95,7 @@
               label="List"
               v-model="price.subPrice"
               required
-              :rules="validateInputs.lessText"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
           </v-sheet>

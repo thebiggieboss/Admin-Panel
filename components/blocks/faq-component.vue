@@ -9,7 +9,7 @@
                 label="Заголовок"
                 v-model="faqData.title"
                 required
-                :rules="validateInputs.blockTitle"
+                :rules="validateInputs.text"
                 counter
               ></v-textarea>
             </v-card-title>
@@ -26,7 +26,7 @@
                       label="Название"
                       v-model="el.title"
                       required
-                      :rules="validateInputs.longerText"
+                      :rules="validateInputs.text"
                       counter
                     ></v-textarea>
                     <v-textarea
@@ -34,7 +34,7 @@
                       label="Описание"
                       v-model="el.content"
                       required
-                      :rules="validateInputs.longerText"
+                      :rules="validateInputs.text"
                       counter
                     ></v-textarea>
                   </v-sheet>
@@ -62,7 +62,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -85,12 +85,11 @@ export default {
   data() {
     return {
       dialogEdit: false,
-      dataI18n: this.dataProps
     }
   },
   computed: {
     faqData() {
-      return this.dataI18n[this.$store.state.lang.selectLang].faq
+      return this.dataProps[this.$store.state.lang.selectLang].faq
     }
   },
   methods: {

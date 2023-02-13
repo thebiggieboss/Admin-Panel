@@ -53,13 +53,15 @@
                   ></v-textarea>
                 </v-col>
                 <v-col cols="6">
-                  <v-textarea
+                  <v-text-field
                     rows="1"
                     label="Цена"
+                    type="number"
                     v-model="cloudS3Calc.manualAddition.monthPrice"
+                    :rules="validateInputs.price"
                     required
                     counter
-                  ></v-textarea>
+                  ></v-text-field>
                   <v-textarea
                     rows="1"
                     label="Константа"
@@ -80,13 +82,15 @@
                     required
                     counter
                   ></v-textarea>
-                  <v-textarea
+                  <v-text-field
                     rows="1"
+                    type="number"
                     label="Цена"
-                    v-model="item.value"
+                    v-model="item.price"
+                    :rules="validateInputs.price"
                     required
                     counter
-                  ></v-textarea>
+                  ></v-text-field>
                 </v-sheet>
               </v-col>
               <v-col cols="6">
@@ -130,7 +134,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -149,13 +153,12 @@ export default {
   },
   data() {
     return {
-      dataI18n: this.dataProps,
       dialogEdit: false
     }
   },
   computed: {
     cloudS3Calc() {
-      return this.dataI18n[this.$store.state.lang.selectLang].objectStorage.cards
+      return this.dataProps[this.$store.state.lang.selectLang].objectStorage.cards
     }
   },
   methods: {

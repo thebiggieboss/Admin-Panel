@@ -5,7 +5,7 @@
       label="Заголовок"
       v-model="cardData.title"
       required
-      :rules="validateInputs.blockTitle"
+      :rules="validateInputs.text"
       counter
     ></v-textarea>
     <v-textarea
@@ -13,7 +13,7 @@
       label="Описание"
       v-model="cardData.des"
       required
-      :rules="validateInputs.blockTitle"
+      :rules="validateInputs.text"
       counter
     ></v-textarea>
     <v-sheet class="v-sheet--box">
@@ -22,7 +22,7 @@
         label="Switch"
         v-model="cardData.amountWorkPlaces.title"
         required
-        :rules="validateInputs.blockTitle"
+        :rules="validateInputs.text"
         counter
       ></v-textarea>
       <div class="pb-4">

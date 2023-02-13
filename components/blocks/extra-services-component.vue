@@ -1,6 +1,6 @@
 <template>
   <div class="pt-16 pb-16">
-    <select-city-component :city-list="dataI18n" />
+    <select-city-component :city-list="dataProps" />
     <v-card>
       <v-card-title>
         <v-textarea
@@ -8,7 +8,7 @@
           label="Заголовок"
           v-model="extraServices.title"
           required
-          :rules="validateInputs.blockTitle"
+          :rules="validateInputs.text"
           counter
           hide-details
         ></v-textarea>
@@ -58,7 +58,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -93,7 +93,6 @@ export default {
     return {
       tab: null,
       dialogEdit: false,
-      dataI18n: this.dataProps,
     };
   },
   watch: {
@@ -103,11 +102,11 @@ export default {
   },
   computed: {
     location() {
-      let city = this.dataI18n[this.$store.state.lang.selectLang].selectCity.list;
+      let city = this.dataProps[this.$store.state.lang.selectLang].selectCity.list;
       return city.find((item) => item.id === this.$store.state.lang.location).extraServicesList.sort((a, b) => a - b);
     },
     extraServices() {
-      return this.dataI18n[this.$store.state.lang.selectLang].extraServicesList
+      return this.dataProps[this.$store.state.lang.selectLang].extraServicesList
     },
     allList() {
       return {
@@ -139,7 +138,7 @@ export default {
       this.location.push(id)
     },
     deleteCard(elem) {
-      let cities =  this.dataI18n[this.$store.state.lang.selectLang].selectCity.list
+      let cities =  this.dataProps[this.$store.state.lang.selectLang].selectCity.list
       cities.map(item => item.extraServicesList.filter(id => {
         if(id === elem.id) {
           return item.extraServicesList.splice(item.extraServicesList.indexOf(elem.id), 1)

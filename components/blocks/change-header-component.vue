@@ -1,6 +1,6 @@
 <template>
   <div class="pt-16 pb-16">
-    <select-city-component :city-list="dataI18n" />
+    <select-city-component :city-list="dataProps" />
     <v-card>
       <v-tabs
         v-model="tab"
@@ -46,7 +46,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -73,16 +73,15 @@ export default {
     return {
       tab: null,
       dialogEdit: false,
-      dataI18n: this.dataProps
     };
   },
   computed: {
     location() {
-      let city = this.dataI18n[this.$store.state.lang.selectLang].selectCity.list;
+      let city = this.dataProps[this.$store.state.lang.selectLang].selectCity.list;
       return city.find((item) => item.id === this.$store.state.lang.location).headerMenuItems.sort((a, b) => a - b);
     },
     headerMenuList() {
-      return this.dataI18n[this.$store.state.lang.selectLang].header.menuList;
+      return this.dataProps[this.$store.state.lang.selectLang].header.menuList;
     },
     allList() {
       return {
@@ -122,7 +121,7 @@ export default {
       this.location.push(id)
     },
     removeMenu(elem) {
-      let cities =  this.dataI18n[this.$store.state.lang.selectLang].selectCity.list
+      let cities =  this.dataProps[this.$store.state.lang.selectLang].selectCity.list
       cities.map(item => item.headerMenuItems.filter(id => {
         if(id === elem.id) {
           return item.headerMenuItems.splice(item.headerMenuItems.indexOf(elem.id), 1)

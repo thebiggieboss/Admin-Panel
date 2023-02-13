@@ -12,7 +12,7 @@
                     label="Заголовок"
                     v-model="item.title"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-card-title>
@@ -22,7 +22,7 @@
                     label="Описание"
                     v-model="item.description[elIndex]"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-card-text>
@@ -45,7 +45,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -70,12 +70,11 @@ export default {
   data() {
     return {
       dialogEdit: false,
-      dataI18n: this.dataProps
     };
   },
   computed: {
     inetCard() {
-      return this.dataI18n[this.$store.state.lang.selectLang].internetFeatures[this.cardData]
+      return this.dataProps[this.$store.state.lang.selectLang].internetFeatures[this.cardData]
     }
   },
   methods: {

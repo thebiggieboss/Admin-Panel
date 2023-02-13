@@ -72,7 +72,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -93,13 +93,12 @@ export default {
   },
   data() {
     return {
-      dataI18n: this.dataProps,
       dialogEdit: false
     }
   },
   computed: {
     privateCalc() {
-      return this.dataI18n[this.$store.state.lang.selectLang].privateCloud
+      return this.dataProps[this.$store.state.lang.selectLang].privateCloud
     }
   },
   methods: {

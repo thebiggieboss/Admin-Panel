@@ -38,7 +38,7 @@
               rows="1"
               v-model="items.title"
               required
-              :rules="validateInputs.blockTitle"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
             <v-sheet class="v-sheet--box" v-for="(item, index) in items.cards" :key="index">
@@ -54,7 +54,7 @@
                         label="Название"
                         v-model="item.title"
                         required
-                        :rules="validateInputs.blockTitle"
+                        :rules="validateInputs.text"
                         counter
                       ></v-textarea>
                       <v-textarea
@@ -62,7 +62,7 @@
                         label="Заработная плата"
                         v-model="item.salary"
                         required
-                        :rules="validateInputs.blockTitle"
+                        :rules="validateInputs.text"
                         counter
                       ></v-textarea>
                     </v-col>
@@ -73,7 +73,7 @@
                           label="Занятость"
                           v-model="item.content[contentIndex]"
                           required
-                          :rules="validateInputs.blockTitle"
+                          :rules="validateInputs.text"
                           counter
                         ></v-textarea>
                       </div>
@@ -99,7 +99,7 @@
                                   rows="1"
                                   v-model="des.title"
                                   required
-                                  :rules="validateInputs.blockTitle"
+                                  :rules="validateInputs.text"
                                   counter
                                 ></v-textarea>
                               </v-list-item-title>
@@ -113,7 +113,7 @@
                                   :label="des.title"
                                   v-model="des.description[descIndex]"
                                   required
-                                  :rules="validateInputs.blockTitle"
+                                  :rules="validateInputs.text"
                                   counter
                                 ></v-textarea>
                               </v-list-item-title>
@@ -160,7 +160,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -187,12 +187,11 @@ export default {
     return {
       tab: null,
       dialogEdit: false,
-      dataI18n: this.dataProps
     };
   },
   computed: {
     vacanciesCard() {
-      return this.dataI18n[this.$store.state.lang.selectLang].vacanciesList
+      return this.dataProps[this.$store.state.lang.selectLang].vacanciesList
     }
   },
   methods: {

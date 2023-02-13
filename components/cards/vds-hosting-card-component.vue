@@ -7,7 +7,7 @@
         label="Заголовок"
         v-model="cardData.head"
         required
-        :rules="validateInputs.blockTitle"
+        :rules="validateInputs.text"
         counter
       ></v-textarea>
       <v-textarea
@@ -15,7 +15,7 @@
         label="Тариф"
         v-model="cardData.title"
         required
-        :rules="validateInputs.blockTitle"
+        :rules="validateInputs.text"
         counter
       ></v-textarea>
       <v-textarea
@@ -23,7 +23,7 @@
         label="Под заголовок"
         v-model="cardData.subTitle"
         required
-        :rules="validateInputs.blockTitle"
+        :rules="validateInputs.text"
         counter
       ></v-textarea>
     </v-card-title>
@@ -37,7 +37,7 @@
           label="Количество"
           v-model="list.count"
           required
-          :rules="validateInputs.lessText"
+          :rules="validateInputs.text"
           counter
         ></v-textarea>
         <v-textarea
@@ -45,7 +45,7 @@
           label="Описание"
           v-model="list.des"
           required
-          :rules="validateInputs.lessText"
+          :rules="validateInputs.text"
           counter
         ></v-textarea>
       </v-sheet>
@@ -64,7 +64,7 @@
         label="price"
         v-model="cardData.price"
         required
-        :rules="validateInputs.lessText"
+        :rules="validateInputs.text"
         counter
       ></v-textarea>
       <v-textarea
@@ -72,7 +72,7 @@
         label="Иконка"
         v-model="cardData.icon"
         required
-        :rules="validateInputs.blockIcon"
+        :rules="validateInputs.text"
         counter
       ></v-textarea>
       <v-textarea
@@ -80,7 +80,7 @@
         label="price"
         v-model="cardData.subPrice"
         required
-        :rules="validateInputs.lessText"
+        :rules="validateInputs.text"
         counter
       ></v-textarea>
     </v-card-text>

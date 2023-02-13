@@ -36,7 +36,7 @@
                 label="Название блока"
                 v-model="item.title"
                 required
-                :rules="validateInputs.blockTitle"
+                :rules="validateInputs.text"
                 counter
               ></v-textarea>
               <v-textarea
@@ -44,7 +44,7 @@
                 label="Описание блока"
                 v-model="item.des"
                 required
-                :rules="validateInputs.longerText"
+                :rules="validateInputs.text"
                 counter
               ></v-textarea>
               <v-textarea
@@ -52,7 +52,7 @@
                 label="Ссылка"
                 v-model="item.path"
                 required
-                :rules="validateInputs.blockPath"
+                :rules="validateInputs.text"
                 counter
               ></v-textarea>
             </v-card>

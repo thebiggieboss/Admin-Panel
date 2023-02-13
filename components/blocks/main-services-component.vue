@@ -1,6 +1,6 @@
 <template>
   <div class="pb-16 pt-16">
-    <select-city-component :city-list="dataI18n"/>
+    <select-city-component :city-list="dataProps"/>
     <data-table-component :data-table="mainService.key">
       <v-form ref="form" @submit.prevent="submit">
         <div  v-for="(item, index) in mainServicesBlocks" :key="index">
@@ -28,7 +28,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -54,16 +54,15 @@ export default {
   data() {
     return {
       dialogEdit: false,
-      dataI18n: this.dataProps
     };
   },
   computed: {
     location() {
-      let city = this.dataI18n[this.$store.state.lang.selectLang].selectCity.list
+      let city = this.dataProps[this.$store.state.lang.selectLang].selectCity.list
       return city.find(item => item.id === this.$store.state.lang.location)
     },
     mainService() {
-      return this.dataI18n[this.$store.state.lang.selectLang].mainServices;
+      return this.dataProps[this.$store.state.lang.selectLang].mainServices;
     },
     mainServicesBlocks() {
       return this.location.mainServices.map((service) => {

@@ -6,7 +6,7 @@
         label="Услуг"
         v-model="cardData.title"
         required
-        :rules="validateInputs.blockTitle"
+        :rules="validateInputs.text"
         counter
       ></v-textarea>
     </v-card-title>
@@ -16,7 +16,7 @@
         label="Иконка"
         v-model="cardData.icon"
         type="text"
-        :rules="validateInputs.blockIcon"
+        :rules="validateInputs.text"
       >
       </v-textarea>
       <v-textarea
@@ -24,7 +24,7 @@
         label="Описание"
         v-model="cardData.description"
         type="text"
-        :rules="validateInputs.blockTitle"
+        :rules="validateInputs.text"
       >
       </v-textarea>
       <v-textarea
@@ -32,7 +32,7 @@
         label="Ссылка"
         v-model="cardData.path"
         type="text"
-        :rules="validateInputs.blockPath"
+        :rules="validateInputs.text"
       >
       </v-textarea>
     </v-card-text>

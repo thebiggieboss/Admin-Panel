@@ -18,7 +18,7 @@
                       label="Заголовок"
                       v-model="item.title"
                       required
-                      :rules="validateInputs.blockTitle"
+                      :rules="validateInputs.text"
                       counter
                     ></v-textarea>
                   </v-col>
@@ -28,7 +28,7 @@
                       label="Тариф"
                       v-model="item.subtitle"
                       required
-                      :rules="validateInputs.blockTitle"
+                      :rules="validateInputs.text"
                       counter
                     ></v-textarea>
                   </v-col>
@@ -44,7 +44,7 @@
                     label="Количество"
                     v-model="list.count"
                     required
-                    :rules="validateInputs.lessText"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                   <v-textarea
@@ -52,7 +52,7 @@
                     label="Описание"
                     v-model="list.des"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-sheet>
@@ -64,7 +64,7 @@
                   label="price"
                   v-model="item.price"
                   required
-                  :rules="validateInputs.lessText"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
                 <v-textarea
@@ -72,7 +72,7 @@
                   label="Иконка"
                   v-model="item.icon"
                   required
-                  :rules="validateInputs.blockIcon"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
                 <v-textarea
@@ -80,7 +80,7 @@
                   label="price"
                   v-model="item.subPrice"
                   required
-                  :rules="validateInputs.lessText"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
               </v-card-text>
@@ -105,7 +105,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -128,12 +128,11 @@ export default {
   data() {
     return {
       dialogEdit: false,
-      dataI18n: this.dataProps
     };
   },
   computed: {
     hostingCard() {
-      return this.dataI18n[this.$store.state.lang.selectLang].hostingServices
+      return this.dataProps[this.$store.state.lang.selectLang].hostingServices
     }
   },
   methods: {

@@ -1,37 +1,18 @@
 import {getI18n, postI18n} from "@/service/user";
 export default {
-  // data() {
-  //   return {
-  //     dataI18n: undefined
-  //   }
-  // },
   computed: {
     validateInputs() {
       return {
-        blockTitle: [
+        text: [
           (v) => !!v || "заполните поле",
-          (v) => (!!v && v.length > 3) || 'некоректная',
-          v => (v || '' ).length <= 600 || 'Description must be 100 characters or less'
         ],
-        blockIcon: [
+        price: [
           (v) => !!v || "заполните поле",
-          // (v) => (!!v && v === (`${v}.${'svg' || 'png' || 'jpeg'}`)) || 'некоректная'
-          v => (v || '' ).length <= 700 || 'Description must be 100 characters or les',
-        ],
-        blockPath: [
-          (v) => !!v || "заполните поле",
-          (v) => (v || '' ).length <= 700 || 'Description must be 100 characters or les',
+          (v) => (v && v.length  >= 0) || 'Неверный номер',
         ],
         phoneRules: [
           (v) => !!v.length || 'Заполните поле',
-          (v) => (v && v.length === 16) || 'Неверный номер',
         ],
-        longerText: [
-          (v) => !!v || "заполните поле",
-        ],
-        lessText: [
-          (v) => !!v || "заполните поле",
-        ]
       }
     },
   },
@@ -42,10 +23,11 @@ export default {
     arrAdder(block, params) {
       return block.push(params)
     },
-    async GetI18n(version) {
+    async GetI18n() {
+      const version = this.$store.state.lang.version
       try {
         const res = await getI18n(version);
-        this.dataI18n = res.data.content;
+        this.dataProps = res.data.data.content;
       } catch (e) {
         this.$toast.open({
           message: e.message,

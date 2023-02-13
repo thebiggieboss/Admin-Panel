@@ -107,7 +107,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -129,13 +129,12 @@ export default {
   data() {
     return {
       tabIndex: null,
-      dataI18n: this.dataProps,
       dialogEdit: false
     };
   },
   computed: {
     dedicatedCalc() {
-      return this.dataI18n[this.$store.state.lang.selectLang].serverRental.tab[0].cards;
+      return this.dataProps[this.$store.state.lang.selectLang].serverRental.tab[0].cards;
     },
     tabs() {
       return [

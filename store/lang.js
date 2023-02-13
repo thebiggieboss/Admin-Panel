@@ -4,6 +4,7 @@ const defaultLang = 'ru'
 export const state = () => ({
   selectLang: 'ru',
   location: 1,
+  version: undefined
 });
 
 export const getters = {
@@ -12,6 +13,9 @@ export const getters = {
   },
   getLocation: (state) => {
     return state.location;
+  },
+  getVersion: (state) => {
+    return state.version
   }
 };
 
@@ -22,6 +26,9 @@ export const mutations = {
   setLocation(state, location) {
     state.location = location
   },
+  setVersion(state, version) {
+    state.version = version
+  }
 };
 
 export const actions = {
@@ -29,7 +36,8 @@ export const actions = {
      const currentLang = this.$cookies.get("selectLang")
      try {
        const res = await getI18n();
-       const isHasLang = res.data.data.content.hasOwnProperty(currentLang)
+       commit('setVersion', res.data.data.version)
+       const isHasLang = res.data.data.data.content.hasOwnProperty(currentLang)
        if(!isHasLang) {
          throw ''
        }

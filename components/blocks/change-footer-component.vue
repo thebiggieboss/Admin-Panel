@@ -1,6 +1,6 @@
 <template>
   <div class="pb-16 pt-16">
-    <select-city-component :city-list="dataI18n" />
+    <select-city-component :city-list="dataProps" />
     <v-card>
       <v-tabs v-model="tab" background-color="primary" dark centered grow>
         <v-tab
@@ -11,8 +11,8 @@
         </v-tab>
       </v-tabs>
 
-      <v-tabs-items v-model="tab" class="pa-6">
-        <v-form ref="form" @submit.prevent="submit">
+      <v-form ref="form" @submit.prevent="submit">
+        <v-tabs-items v-model="tab" class="pa-6">
           <v-tab-item
             v-for="(item, index) in Object.entries(footerServices)"
             :key="index"
@@ -26,7 +26,7 @@
                       label="Название"
                       v-model="footerItems.navigation.services.title"
                       type="text"
-                      :rules="validateInputs.blockTitle"
+                      :rules="validateInputs.text"
                     >
                     </v-textarea>
                   </v-card-title>
@@ -65,13 +65,23 @@
               <footer-contacts-card-component :card-data="footerItems" />
             </v-row>
           </v-tab-item>
-        </v-form>
-      </v-tabs-items>
+        </v-tabs-items>
+        <v-card-actions>
+          <v-row>
+            <v-col cols="12">
+              <div class="d-flex align-center" style="gap: 32px">
+                <v-btn type="submit"> Сохранить </v-btn>
+                <v-btn @click="GetI18n"> Вернуть данные </v-btn>
+              </div>
+            </v-col>
+          </v-row>
+        </v-card-actions>
+      </v-form>
     </v-card>
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -109,17 +119,16 @@ export default {
     return {
       tab: null,
       dialogEdit: false,
-      dataI18n: this.dataProps,
     };
   },
   computed: {
     location() {
       let city =
-        this.dataI18n[this.$store.state.lang.selectLang].selectCity.list;
+        this.dataProps[this.$store.state.lang.selectLang].selectCity.list;
       return city.find((item) => item.id === this.$store.state.lang.location);
     },
     footerItems() {
-      return this.dataI18n[this.$store.state.lang.selectLang].footer;
+      return this.dataProps[this.$store.state.lang.selectLang].footer;
     },
     footerServices() {
       return {
@@ -157,7 +166,7 @@ export default {
     },
     deleteCard(elem) {
       let cities =
-        this.dataI18n[this.$store.state.lang.selectLang].selectCity.list;
+        this.dataProps[this.$store.state.lang.selectLang].selectCity.list;
       cities.map((item) =>
         item.footerServicesList.filter((id) => {
           if (id === elem.id) {

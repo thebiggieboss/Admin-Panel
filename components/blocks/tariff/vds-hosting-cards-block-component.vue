@@ -40,7 +40,7 @@
                   rows="1"
                   v-model="items.title"
                   required
-                  :rules="validateInputs.blockTitle"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
               </v-col>
@@ -76,7 +76,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -103,12 +103,11 @@ export default {
     return {
       tab: null,
       dialogEdit: false,
-      dataI18n: this.dataProps
     };
   },
   computed: {
     virtualCard() {
-      return this.dataI18n[this.$store.state.lang.selectLang].virtualServers
+      return this.dataProps[this.$store.state.lang.selectLang].virtualServers
     }
   },
   methods: {

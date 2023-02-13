@@ -23,7 +23,7 @@
               label="Название блока"
               v-model="cardData.title"
               required
-              :rules="validateInputs.blockTitle"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
           </v-card-title>
@@ -33,7 +33,7 @@
               label="Описание блока"
               v-model="cardData.des"
               required
-              :rules="validateInputs.blockTitle"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
             <v-textarea
@@ -41,7 +41,7 @@
               label="Иконка блока"
               v-model="cardData.icon"
               required
-              :rules="validateInputs.blockTitle"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
             <v-textarea
@@ -49,7 +49,7 @@
               label="Ссылка "
               v-model="cardData.path"
               required
-              :rules="validateInputs.blockTitle"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
             <v-textarea
@@ -57,7 +57,7 @@
               label="Кнопка"
               v-model="cardData.pathName"
               required
-              :rules="validateInputs.blockTitle"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
           </v-card-text>

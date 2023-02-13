@@ -30,13 +30,15 @@
             ></v-textarea>
           </v-col>
           <v-col cols="6">
-            <v-textarea
+            <v-text-field
               rows="1"
+              type="number"
               label="Цена"
               v-model="item.monthPrice"
+              :rules="validateInputs.price"
               required
               counter
-            ></v-textarea>
+            ></v-text-field>
             <v-textarea
               rows="1"
               label="Value"

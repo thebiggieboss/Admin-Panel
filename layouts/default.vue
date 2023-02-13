@@ -88,6 +88,8 @@
                   v-for="(item, index) in versionsList"
                   :key="index"
                   color="primary"
+                  :class="{'v-list-item--active': $store.state.lang.version === item}"
+                  @click="versionControl(item)"
                 >
                   <v-list-item-title v-html="item"></v-list-item-title>
                 </v-list-item>
@@ -141,9 +143,11 @@
 <script>
 import { getI18n } from "@/service/user";
 import { mapActions } from "vuex";
+import dataMixin from "@/modules/dataMixin";
 
 export default {
   name: "DefaultLayout",
+  mixins: [dataMixin],
   data() {
     return {
       title: "NLS.KZ",
@@ -168,7 +172,7 @@ export default {
     selectLang(e) {
       this.$store.commit("lang/setSelectLang", e);
       this.$cookies.set("selectLang", e);
-    },
+    }
   },
   computed: {
     navigationItems() {
@@ -308,11 +312,15 @@ export default {
     ...mapActions({
       getLocation: "lang/getLocation",
     }),
+    async versionControl(e) {
+      this.$store.commit('lang/setVersion', e)
+      this.$nuxt.$emit('refreshPage')
+    },
     async GetI18nDefault() {
       try {
         const res = await getI18n()
-        this.lang = Object.keys(res.data.content)
-        this.versionsList = res.data.versions
+        this.lang = Object.keys(res.data.data.content)
+        this.versionsList = res.data.data.versions
 
       }catch (e) {
         this.$toast.open({

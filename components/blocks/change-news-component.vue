@@ -10,7 +10,7 @@
                   rows="1"
                   label="Заголовок"
                   v-model="newsData.title"
-                  :rules="validateInputs.longerText"
+                  :rules="validateInputs.text"
                   required
                   counter
                 >
@@ -19,7 +19,7 @@
                   rows="2"
                   label="Описание"
                   v-model="newsData.description"
-                  :rules="validateInputs.longerText"
+                  :rules="validateInputs.text"
                   required
                   counter
                 >
@@ -28,7 +28,7 @@
                   rows="1"
                   label="Ссылка на картинку"
                   v-model="newsData.main_image"
-                  :rules="validateInputs.longerText"
+                  :rules="validateInputs.text"
                   required
                   counter
                 >
@@ -37,7 +37,7 @@
                   rows="1"
                   label="URL"
                   v-model="newsData.url"
-                  :rules="validateInputs.longerText"
+                  :rules="validateInputs.text"
                   required
                   counter
                 >

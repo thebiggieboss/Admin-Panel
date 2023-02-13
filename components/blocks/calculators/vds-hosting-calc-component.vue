@@ -35,13 +35,15 @@
                   required
                   counter
                 ></v-textarea>
-                <v-textarea
+                <v-text-field
                   rows="1"
+                  type="number"
                   label="Цена"
-                  v-model="item.monthPrice"
+                  v-model="item.price"
+                  :rules="validateInputs.price"
                   required
                   counter
-                ></v-textarea>
+                ></v-text-field>
                 <v-textarea
                   rows="1"
                   label="Счетчик начинается с"
@@ -89,7 +91,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -108,13 +110,12 @@ export default {
   },
   data() {
     return {
-      dataI18n: this.dataProps,
       dialogEdit: false
     }
   },
   computed: {
     vdsCalc() {
-      return this.dataI18n[this.$store.state.lang.selectLang].virtualConfigurator
+      return this.dataProps[this.$store.state.lang.selectLang].virtualConfigurator
     }
   },
   methods: {

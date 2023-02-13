@@ -13,7 +13,7 @@
                 label="Город"
                 v-model="item.title"
                 required
-                :rules="validateInputs.blockTitle"
+                :rules="validateInputs.text"
                 counter
               ></v-textarea>
             </v-col>
@@ -29,7 +29,7 @@
               label="Адресс"
               v-model="item.addresses[addressIndex]"
               required
-              :rules="validateInputs.blockTitle"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
           </v-sheet>
@@ -67,7 +67,7 @@
             label="Иконка"
             v-model="cardData.foot.logo"
             required
-            :rules="validateInputs.blockIcon"
+            :rules="validateInputs.text"
             counter
           ></v-textarea>
           <v-textarea
@@ -75,7 +75,7 @@
             label="Copyright"
             v-model="cardData.foot.copyright"
             required
-            :rules="validateInputs.blockTitle"
+            :rules="validateInputs.text"
             counter
           ></v-textarea>
           <v-textarea
@@ -105,7 +105,7 @@
               label="Иконка"
               v-model="el.icon"
               required
-              :rules="validateInputs.blockIcon"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
             <v-textarea
@@ -113,7 +113,7 @@
               label="Ссылка"
               v-model="el.path"
               required
-              :rules="validateInputs.blockPath"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
             <v-textarea
@@ -121,7 +121,7 @@
               label="Подсказка"
               v-model="el.prompt"
               required
-              :rules="validateInputs.blockTitle"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
           </v-sheet>

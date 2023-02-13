@@ -11,7 +11,7 @@
                   label="Заголовок"
                   v-model="aboutComp.title"
                   required
-                  :rules="validateInputs.blockTitle"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
                 <v-textarea
@@ -19,7 +19,7 @@
                   label="Подзаголовок"
                   v-model="aboutComp.subTitle"
                   required
-                  :rules="validateInputs.blockTitle"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
               </v-col>
@@ -29,7 +29,7 @@
                   label="Главный титул"
                   v-model="aboutComp.head"
                   required
-                  :rules="validateInputs.blockTitle"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
                 <v-textarea
@@ -37,7 +37,7 @@
                   label="Описание"
                   v-model="aboutComp.des"
                   required
-                  :rules="validateInputs.longerText"
+                  :rules="validateInputs.text"
                   counter
                 ></v-textarea>
               </v-col>
@@ -49,7 +49,7 @@
               label="Название списка"
               v-model="aboutComp.list.title"
               required
-              :rules="validateInputs.blockTitle"
+              :rules="validateInputs.text"
               counter
             ></v-textarea>
             <v-row>
@@ -63,7 +63,7 @@
                     label="Описание"
                     v-model="item.description"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                   <v-textarea
@@ -71,7 +71,7 @@
                     label="Иконка"
                     v-model="item.icon"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-sheet>
@@ -101,7 +101,7 @@
     <agree-to-edit-component
       v-if="!!dialogEdit"
       @close="dialogEdit = false"
-      :main-data="dataI18n"
+      :main-data="dataProps"
     />
   </div>
 </template>
@@ -124,12 +124,11 @@ export default {
   data() {
     return {
       dialogEdit: false,
-      dataI18n: this.dataProps
     }
   },
   computed: {
     aboutComp() {
-      return this.dataI18n[this.$store.state.lang.selectLang].aboutUsNls
+      return this.dataProps[this.$store.state.lang.selectLang].aboutUsNls
     }
   },
   methods: {

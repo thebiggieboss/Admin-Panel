@@ -35,7 +35,7 @@
                     label="Услуг"
                     v-model="item.value"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-col>
@@ -45,7 +45,7 @@
                     label="Иконка"
                     v-model="item.icon"
                     required
-                    :rules="validateInputs.blockIcon"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                 </v-col>
@@ -80,7 +80,7 @@
                     label="Заголовок"
                     v-model="el.title"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                   <v-textarea
@@ -88,7 +88,7 @@
                     label="Описание"
                     v-model="el.des"
                     required
-                    :rules="validateInputs.blockTitle"
+                    :rules="validateInputs.text"
                     counter
                   ></v-textarea>
                   <div>
