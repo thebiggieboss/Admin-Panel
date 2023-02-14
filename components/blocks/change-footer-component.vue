@@ -71,7 +71,7 @@
             <v-col cols="12">
               <div class="d-flex align-center" style="gap: 32px">
                 <v-btn type="submit"> Сохранить </v-btn>
-                <v-btn @click="GetI18n"> Вернуть данные </v-btn>
+                <v-btn @click="$nuxt.$emit('refreshPage')"> Вернуть данные </v-btn>
               </div>
             </v-col>
           </v-row>

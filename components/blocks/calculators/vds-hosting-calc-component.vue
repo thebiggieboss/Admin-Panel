@@ -39,7 +39,7 @@
                   rows="1"
                   type="number"
                   label="Цена"
-                  v-model="item.price"
+                  v-model="item.monthPrice"
                   :rules="validateInputs.price"
                   required
                   counter
@@ -79,7 +79,7 @@
                 <v-btn type="submit">
                   Сохранить
                 </v-btn>
-                <v-btn @click="GetI18n">
+                <v-btn @click="$nuxt.$emit('refreshPage')">
                   Вернуть данные
                 </v-btn>
               </div>

@@ -37,13 +37,15 @@
                   ></v-textarea>
                 </v-col>
                 <v-col cols="6">
-                  <v-textarea
+                  <v-text-field
                     rows="1"
                     label="Value"
                     v-model="cloudS3Calc.manualAddition.count"
                     required
                     counter
-                  ></v-textarea>
+                    type="number"
+                    :rules="validateInputs.price"
+                  ></v-text-field>
                   <v-textarea
                     rows="1"
                     label="Единица измерения"
@@ -62,13 +64,15 @@
                     required
                     counter
                   ></v-text-field>
-                  <v-textarea
+                  <v-text-field
                     rows="1"
+                    type="number"
                     label="Константа"
                     v-model="cloudS3Calc.manualAddition.value"
+                    :rules="validateInputs.price"
                     required
                     counter
-                  ></v-textarea>
+                  ></v-text-field>
                 </v-col>
               </v-row>
             </v-sheet>
@@ -86,7 +90,7 @@
                     rows="1"
                     type="number"
                     label="Цена"
-                    v-model="item.price"
+                    v-model="item.value"
                     :rules="validateInputs.price"
                     required
                     counter
@@ -123,7 +127,7 @@
               <v-btn type="submit">
                 Сохранить
               </v-btn>
-              <v-btn @click="GetI18n">
+              <v-btn @click="$nuxt.$emit('refreshPage')">
                 Вернуть данные
               </v-btn>
             </div>

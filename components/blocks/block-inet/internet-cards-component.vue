@@ -34,7 +34,7 @@
               <v-btn type="submit">
                 Сохранить
               </v-btn>
-              <v-btn @click="GetI18n">
+              <v-btn @click="$nuxt.$emit('refreshPage')">
                 Вернуть данные
               </v-btn>
             </div>

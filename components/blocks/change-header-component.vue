@@ -17,14 +17,15 @@
         </v-tab>
       </v-tabs>
 
-      <v-tabs-items v-model="tab">
-        <v-form ref="form" @submit.prevent="submit">
-          <v-tab-item
-            v-for="(item, index) in Object.entries(allList)"
-            :key="index"
-          >
-            <change-header-card-component :card-data="{item, loc: location}" @removeMenu="removeMenu"/>
-          </v-tab-item>
+      <v-form ref="form" @submit.prevent="submit">
+        <v-tabs-items v-model="tab">
+            <v-tab-item
+              v-for="(item, index) in Object.entries(allList)"
+              :key="index"
+            >
+              <change-header-card-component :card-data="{item, loc: location}" @removeMenu="removeMenu"/>
+            </v-tab-item>
+        </v-tabs-items>
           <v-card-actions>
             <v-row>
               <v-col cols="12">
@@ -32,7 +33,7 @@
                   <v-btn type="submit">
                     Сохранить
                   </v-btn>
-                  <v-btn @click="GetI18n">
+                  <v-btn @click="$nuxt.$emit('refreshPage')">
                     Вернуть данные
                   </v-btn>
                   <add-new-card-component :card-data="1" @change="addMenu"/>
@@ -40,8 +41,7 @@
               </v-col>
             </v-row>
           </v-card-actions>
-        </v-form>
-      </v-tabs-items>
+      </v-form>
     </v-card>
     <agree-to-edit-component
       v-if="!!dialogEdit"

@@ -6,10 +6,7 @@ export default {
         text: [
           (v) => !!v || "заполните поле",
         ],
-        price: [
-          (v) => !!v || "заполните поле",
-          (v) => (v && v.length  >= 0) || 'Неверный номер',
-        ],
+        price: [v => (!isNaN(parseFloat(v)) && v >= 0) || 'Заполните поле'],
         phoneRules: [
           (v) => !!v.length || 'Заполните поле',
         ],
@@ -23,23 +20,21 @@ export default {
     arrAdder(block, params) {
       return block.push(params)
     },
-    async GetI18n() {
-      // const version = this.$store.state.lang.version
-      try {
-        const res = await getI18n();
-        this.dataProps = res.data.data.content;
-        this.versionsList = res.data.data.versions
-        this.$store.commit('lang/setVersion', res.data.data.version)
-      } catch (e) {
-        this.$toast.open({
-          message: e.message,
-          type: e.success ? "success" : "error",
-        });
-      }
-    },
+    // async GetI18n() {
+    //   const version = this.$store.state.lang.version
+    //   try {
+    //     const res = await getI18n(version);
+    //   } catch (e) {
+    //     this.$toast.open({
+    //       message: e.message,
+    //       type: e.success ? "success" : "error",
+    //     });
+    //   }
+    // },
     async PostI18n(data) {
       try {
         const res = await postI18n(data)
+        this.$store.commit('lang/setVersion', res.data)
         this.$toast.open({
           message: res.message,
           type: res.success ? "success" : "error",
@@ -49,8 +44,6 @@ export default {
           message: e.message,
           type: e.success ? "success" : "error",
         });
-      }finally {
-        await this.GetI18n()
       }
     }
   },

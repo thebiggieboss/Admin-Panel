@@ -15,6 +15,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
+            v-if="!loadingDialog"
             color="green darken-1"
             text
             @click="$emit('close')"
@@ -25,6 +26,8 @@
             color="green darken-1"
             text
             @click="submit"
+            :disabled="loadingDialog"
+            :loading="loadingDialog"
           >
             Сохранить
           </v-btn>
@@ -45,12 +48,14 @@ export default {
   },
   data() {
     return {
-      dialog: true
+      dialog: true,
+      loadingDialog: false
     }
   },
   methods: {
     async submit() {
-      await this.PostI18n(this.mainData)
+      this.loadingDialog = true
+      await this.PostI18n(this.mainData).finally(() => this.loadingDialog = false)
       this.$emit('close')
     }
   },

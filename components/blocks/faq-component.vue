@@ -16,7 +16,7 @@
             <v-card-text>
               <v-row>
                 <v-col cols="12" lg="4" v-for="(item, index) in faqData" :key="index" v-if="!!item.list">
-                  <h3 class="pb-4">{{item.key}}</h3>
+                  <h3 class="pb-4">{{item.title}}</h3>
                   <v-sheet class="v-sheet--box" v-for="(el, elIndex) in item.list" :key="elIndex">
                     <div class="d-flex justify-end">
                       <delete-card-component :card-data="'Удаление пункта'" @change="arrDeleter(item.list, elIndex)"/>
@@ -49,7 +49,7 @@
                     <v-btn type="submit">
                       Сохранить
                     </v-btn>
-                    <v-btn @click="GetI18n">
+                    <v-btn @click="$nuxt.$emit('refreshPage')">
                       Вернуть данные
                     </v-btn>
                   </div>

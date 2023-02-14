@@ -15,7 +15,7 @@
         </template>
         <v-list>
           <v-list-item
-            v-for="(item, index) in versionList.slice(0, 5)"
+            v-for="(item, index) in versionList.slice(0, 10)"
             :key="index"
             color="primary"
             :class="{'v-list-item--active': $store.state.lang.version === item}"
@@ -23,7 +23,6 @@
           >
             <v-list-item-title v-html="item"></v-list-item-title>
           </v-list-item>
-          <span class="d-flex justify-center text-body-2">Еще</span>
         </v-list>
       </v-menu>
     </v-list-item>
@@ -31,12 +30,14 @@
 </template>
 
 <script>
+import {getI18n} from "@/service/user";
+
 export default {
   name: "version-component",
   data: () => {
     return {
       versions: undefined,
-      versionsList: []
+      versionsList: [],
     }
   },
   watch: {
@@ -55,6 +56,18 @@ export default {
     versionControl(e) {
       this.$store.commit('lang/setVersion', e)
       this.$nuxt.$emit('refreshPage')
+    },
+    async GetI18n() {
+      const version = this.$store.state.lang.version
+      try {
+        const res = await getI18n(version);
+        this.versionsList = res.data.data.versions
+      } catch (e) {
+        this.$toast.open({
+          message: e.message,
+          type: e.success ? "success" : "error",
+        });
+      }
     },
   },
   async mounted() {

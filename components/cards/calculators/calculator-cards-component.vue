@@ -39,13 +39,15 @@
               required
               counter
             ></v-text-field>
-            <v-textarea
+            <v-text-field
               rows="1"
+              type="number"
               label="Value"
               v-model="item.value"
+              :rules="validateInputs.price"
               required
               counter
-            ></v-textarea>
+            ></v-text-field>
           </v-col>
         </v-row>
       </v-sheet>
