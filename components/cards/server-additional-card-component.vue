@@ -4,7 +4,7 @@
       <v-card>
         <v-card-title>
           <v-row>
-            <v-col cols="12" md="6">
+            <v-col cols="12">
               <v-textarea
                 rows="1"
                 label="Название"
@@ -14,15 +14,8 @@
                 counter
               ></v-textarea>
             </v-col>
-            <v-col cols="12" md="6">
-              <v-textarea
-                rows="1"
-                label="Иконка"
-                v-model="item.icon"
-                required
-                :rules="validateInputs.text"
-                counter
-              ></v-textarea>
+            <v-col cols="12">
+              <image-dialog-component v-model="item.icon"/>
             </v-col>
           </v-row>
         </v-card-title>
@@ -107,8 +100,11 @@
 </template>
 
 <script>
+import ImageDialogComponent from "@/components/dialogs/image-dialog-component.vue";
+
 export default {
   name: "server-additional-card-component",
+  components: {ImageDialogComponent},
   props: {
     cardData: {
       type: Array,

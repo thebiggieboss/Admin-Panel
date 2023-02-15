@@ -40,14 +40,7 @@
                   ></v-textarea>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <v-textarea
-                    rows="1"
-                    label="Иконка"
-                    v-model="item.icon"
-                    required
-                    :rules="validateInputs.text"
-                    counter
-                  ></v-textarea>
+                  <image-dialog-component v-model="item.icon"/>
                 </v-col>
               </v-row>
             </v-sheet>
@@ -143,6 +136,7 @@
 <script>
 import DeleteCardComponent from "@/components/cards/delete-card-component.vue";
 import AddNewCardComponent from "@/components/cards/add-new-card-component.vue";
+import ImageDialogComponent from "@/components/dialogs/image-dialog-component.vue";
 
 export default {
   name: "change-header-card-component",
@@ -152,7 +146,7 @@ export default {
       default: () => ({}),
     },
   },
-  components: {AddNewCardComponent, DeleteCardComponent },
+  components: {ImageDialogComponent, AddNewCardComponent, DeleteCardComponent },
   data: () => ({
     servicesType: ["service--primary", "service--in-progress"],
   }),

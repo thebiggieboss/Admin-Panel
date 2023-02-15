@@ -24,15 +24,16 @@
                   counter
                 >
                 </v-textarea>
-                <v-textarea
-                  rows="1"
-                  label="Ссылка на картинку"
-                  v-model="newsData.main_image"
-                  :rules="validateInputs.text"
-                  required
-                  counter
-                >
-                </v-textarea>
+                <image-dialog-component  v-model="newsData.main_image" />
+<!--                <v-textarea-->
+<!--                  rows="1"-->
+<!--                  label="Ссылка на картинку"-->
+<!--                  v-model="newsData.main_image"-->
+<!--                  :rules="validateInputs.text"-->
+<!--                  required-->
+<!--                  counter-->
+<!--                >-->
+<!--                </v-textarea>-->
                 <v-textarea
                   rows="1"
                   label="URL"
@@ -114,10 +115,11 @@ import TiptapEditor from "@/components/elements/tiptap-editor.vue";
 import {GetAllCompany, GetUrlNews, UpdateNews} from "@/service/user";
 import axios from "axios";
 import {StringToDate,} from "@/modules/dateFormat";
+import ImageDialogComponent from "@/components/dialogs/image-dialog-component.vue";
 
 export default {
   name: "change-news-component",
-  components: {TiptapEditor},
+  components: {ImageDialogComponent, TiptapEditor},
   data() {
     return {
       newsData: [],
@@ -196,6 +198,7 @@ export default {
   async mounted() {
     await this.getUrlNews()
     await this.getAllCompany()
+    console.log(this.newsData.main_image)
   },
 }
 </script>

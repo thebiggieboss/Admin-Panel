@@ -24,15 +24,16 @@
                   counter
                 >
                 </v-textarea>
-                <v-textarea
-                  rows="1"
-                  label="Ссылка на картинку"
-                  v-model="storeNews.photo_url"
-                  :rules="validateInputs.text"
-                  required
-                  counter
-                >
-                </v-textarea>
+                <image-dialog-component v-model="storeNews.photo_url" />
+<!--                <v-textarea-->
+<!--                  rows="1"-->
+<!--                  label="Ссылка на картинку"-->
+<!--                  v-model=""-->
+<!--                  :rules="validateInputs.text"-->
+<!--                  required-->
+<!--                  counter-->
+<!--                >-->
+<!--                </v-textarea>-->
                 <v-textarea
                   rows="1"
                   label="URL"
@@ -112,10 +113,11 @@
 <script>
 import TiptapEditor from "@/components/elements/tiptap-editor.vue";
 import {CreateNews, GetAllCompany} from "@/service/user";
+import ImageDialogComponent from "@/components/dialogs/image-dialog-component.vue";
 
 export default {
   name: "create-news-component",
-  components: {TiptapEditor},
+  components: {ImageDialogComponent, TiptapEditor},
   data() {
     return {
       datePicker: false,

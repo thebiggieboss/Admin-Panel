@@ -67,14 +67,7 @@
                   :rules="validateInputs.text"
                   counter
                 ></v-textarea>
-                <v-textarea
-                  rows="1"
-                  label="Иконка"
-                  v-model="item.icon"
-                  required
-                  :rules="validateInputs.text"
-                  counter
-                ></v-textarea>
+<!--                <image-dialog-component v-model="item.icon"/>-->
                 <v-textarea
                   rows="1"
                   label="price"
@@ -115,10 +108,11 @@ import DataTableComponent from "@/components/tables/data-table-component.vue";
 import DeleteCardComponent from "@/components/cards/delete-card-component.vue";
 import AddNewCardComponent from "@/components/cards/add-new-card-component.vue";
 import AgreeToEditComponent from "@/components/dialogs/agree-to-edit-component.vue";
+import ImageDialogComponent from "@/components/dialogs/image-dialog-component.vue";
 
 export default {
   name: "hosting-cards-block-component",
-  components: {AgreeToEditComponent, AddNewCardComponent, DeleteCardComponent, DataTableComponent},
+  components: {ImageDialogComponent, AgreeToEditComponent, AddNewCardComponent, DeleteCardComponent, DataTableComponent},
   props: {
     dataProps: {
       type: Object,

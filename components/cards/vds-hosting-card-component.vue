@@ -67,14 +67,7 @@
         :rules="validateInputs.text"
         counter
       ></v-textarea>
-      <v-textarea
-        rows="1"
-        label="Иконка"
-        v-model="cardData.icon"
-        required
-        :rules="validateInputs.text"
-        counter
-      ></v-textarea>
+<!--      <image-dialog-component v-model="cardData.icon"/>-->
       <v-textarea
         rows="1"
         label="price"
@@ -90,10 +83,11 @@
 <script>
 import DeleteCardComponent from "@/components/cards/delete-card-component.vue";
 import AddNewCardComponent from "@/components/cards/add-new-card-component.vue";
+import ImageDialogComponent from "@/components/dialogs/image-dialog-component.vue";
 
 export default {
   name: "vds-hosting-card-component",
-  components: {AddNewCardComponent, DeleteCardComponent},
+  components: {ImageDialogComponent, AddNewCardComponent, DeleteCardComponent},
   props: {
     cardData: {
       type: Object,

@@ -62,14 +62,7 @@
           О компании
         </v-card-title>
         <v-card-text>
-          <v-textarea
-            rows="1"
-            label="Иконка"
-            v-model="cardData.foot.logo"
-            required
-            :rules="validateInputs.text"
-            counter
-          ></v-textarea>
+          <image-dialog-component v-model="cardData.foot.logo"/>
           <v-textarea
             rows="1"
             label="Copyright"
@@ -100,14 +93,7 @@
             <div class="d-flex justify-end">
               <delete-card-component :card-data="'Удаление пункта'" @change="removeSubBlock(cardData.foot.social.list, elIndex)"/>
             </div>
-            <v-textarea
-              rows="1"
-              label="Иконка"
-              v-model="el.icon"
-              required
-              :rules="validateInputs.text"
-              counter
-            ></v-textarea>
+            <image-dialog-component v-model="el.icon"/>
             <v-textarea
               rows="1"
               label="Ссылка"
@@ -136,9 +122,10 @@
 import DeleteCardComponent from "@/components/cards/delete-card-component.vue";
 import AddNewCardComponent from "@/components/cards/add-new-card-component.vue";
 import { mask } from 'vue-the-mask'
+import ImageDialogComponent from "@/components/dialogs/image-dialog-component.vue";
 export default {
   name: "footer-contacts-card-component",
-  components: {AddNewCardComponent, DeleteCardComponent},
+  components: {ImageDialogComponent, AddNewCardComponent, DeleteCardComponent},
   directives: { mask },
   props: {
     cardData: {

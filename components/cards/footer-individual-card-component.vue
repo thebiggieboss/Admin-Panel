@@ -11,14 +11,7 @@
       ></v-textarea>
     </v-card-title>
     <v-card-text>
-      <v-textarea
-        rows="1"
-        label="Иконка"
-        v-model="cardData.icon"
-        type="text"
-        :rules="validateInputs.text"
-      >
-      </v-textarea>
+      <image-dialog-component v-model="cardData.icon"/>
       <v-textarea
         rows="1"
         label="Описание"
@@ -40,8 +33,11 @@
 </template>
 
 <script>
+import ImageDialogComponent from "@/components/dialogs/image-dialog-component.vue";
+
 export default {
   name: "footer-individual-card-component",
+  components: {ImageDialogComponent},
   props: {
     cardData: {
       type: Object,

@@ -36,14 +36,7 @@
               :rules="validateInputs.text"
               counter
             ></v-textarea>
-            <v-textarea
-              rows="1"
-              label="Иконка блока"
-              v-model="cardData.icon"
-              required
-              :rules="validateInputs.text"
-              counter
-            ></v-textarea>
+            <image-dialog-component v-model="cardData.icon"/>
             <v-textarea
               rows="1"
               label="Ссылка "
@@ -93,8 +86,11 @@
 
 <script>
 
+import ImageDialogComponent from "@/components/dialogs/image-dialog-component.vue";
+
 export default {
   name: "service-card-component",
+  components: {ImageDialogComponent},
   props: {
     cardData: {
       type: Object,
